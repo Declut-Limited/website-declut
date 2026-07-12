@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import FadeIn from "@/components/ui/FadeIn";
 
 const testimonials = [
   {
@@ -97,7 +98,7 @@ export default function Testimonials() {
       className="scroll-mt-24 bg-background py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto max-w-2xl text-center">
+        <FadeIn className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
             What people are saying
           </h2>
@@ -105,7 +106,7 @@ export default function Testimonials() {
             Read testimonials and reviews from satisfied buyers and sellers
             who have found success on our platform.
           </p>
-        </div>
+        </FadeIn>
 
         <motion.div
           ref={trackRef}

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { HiReceiptPercent, HiArrowPath, HiLockClosed } from "react-icons/hi2";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import FadeIn from "@/components/ui/FadeIn";
 
 const cards = [
   {
@@ -85,7 +86,7 @@ export default function BenefitsForBuyers() {
       className="scroll-mt-24 overflow-hidden bg-background py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto max-w-2xl text-center">
+        <FadeIn className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
             Benefits For Buyers
           </h2>
@@ -93,7 +94,7 @@ export default function BenefitsForBuyers() {
             Explore our array of benefits awaiting buyers on Declut -from
             diverse selections to secure transactions and beyond.
           </p>
-        </div>
+        </FadeIn>
 
         <div className="mt-16 grid min-w-0 gap-16 lg:grid-cols-2 lg:items-center lg:gap-12">
           <div className="relative mx-auto w-full min-w-0 max-w-md sm:aspect-9/8 lg:mx-0 lg:max-w-none">
@@ -151,7 +152,7 @@ export default function BenefitsForBuyers() {
             </motion.div>
           </div>
 
-          <div className="min-w-0 text-center lg:text-left">
+          <FadeIn className="min-w-0 text-center lg:text-left">
             <h3 className="text-3xl font-extrabold text-ink sm:text-4xl">
               Discover Endless Treasures
             </h3>
@@ -168,7 +169,7 @@ export default function BenefitsForBuyers() {
             >
               See how it helped others
             </a>
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>

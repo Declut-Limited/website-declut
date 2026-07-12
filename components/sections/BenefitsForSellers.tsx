@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { HiMapPin, HiClipboardDocumentList, HiBanknotes } from "react-icons/hi2";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import FadeIn from "@/components/ui/FadeIn";
 
 const cards = [
   {
@@ -85,7 +86,7 @@ export default function BenefitsForSellers() {
       className="scroll-mt-24 overflow-hidden bg-background-light py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto max-w-2xl text-center">
+        <FadeIn className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
             Benefits For Sellers
           </h2>
@@ -93,10 +94,10 @@ export default function BenefitsForSellers() {
             Unlock your Selling potential: Explore why Declut is your premier
             destination for selling - Ease, Profitability &amp; Support Await!
           </p>
-        </div>
+        </FadeIn>
 
         <div className="mt-16 grid min-w-0 gap-16 lg:grid-cols-2 lg:items-center lg:gap-12">
-          <div className="order-2 min-w-0 text-center lg:order-1 lg:text-left">
+          <FadeIn className="order-2 min-w-0 text-center lg:order-1 lg:text-left">
             <h3 className="text-3xl font-extrabold text-ink sm:text-4xl">
               Declutter With Ease
             </h3>
@@ -110,7 +111,7 @@ export default function BenefitsForSellers() {
             >
               See how it helped others
             </a>
-          </div>
+          </FadeIn>
 
           <div className="relative order-1 mx-auto w-full min-w-0 max-w-md sm:aspect-754/582 lg:order-2 lg:mx-0 lg:max-w-none">
             <div

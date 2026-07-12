@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiPlus } from "react-icons/fi";
+import FadeIn from "@/components/ui/FadeIn";
 
 const faqs = [
   {
@@ -38,7 +39,7 @@ export default function FAQs() {
   return (
     <section id="faqs" className="scroll-mt-24 bg-background-light py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto max-w-2xl text-center">
+        <FadeIn className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
             FAQs
           </h2>
@@ -46,7 +47,7 @@ export default function FAQs() {
             Explore our comprehensive FAQ section to discover everything you
             need to know about using Declut for buying and selling.
           </p>
-        </div>
+        </FadeIn>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}

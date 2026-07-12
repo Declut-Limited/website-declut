@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import FadeIn from "@/components/ui/FadeIn";
 
 const sellerSteps = [
   {
@@ -128,14 +129,14 @@ export default function HowDeclutWorks() {
       className="scroll-mt-24 bg-background py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto max-w-2xl text-center">
+        <FadeIn className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
             How Declut Works
           </h2>
           <p className="mt-4 text-base text-ink/50 sm:text-lg">
             Unlock the simplicity of decluttering with our step-by-step guide
           </p>
-        </div>
+        </FadeIn>
 
         <div className="mt-16 grid gap-16 lg:grid-cols-2 lg:gap-12">
           <StepList

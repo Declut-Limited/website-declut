@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import FadeIn from "@/components/ui/FadeIn";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -82,7 +83,7 @@ export default function WhyChooseUs() {
       className="scroll-mt-24 overflow-hidden bg-background py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto max-w-2xl text-center">
+        <FadeIn className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
             Why you should choose us?
           </h2>
@@ -90,7 +91,7 @@ export default function WhyChooseUs() {
             Discover Why Declut Is Your Top Choice for Buying and Selling -
             Convenience, Value, and Community Await!
           </p>
-        </div>
+        </FadeIn>
 
         <div className="mt-16 grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-12">
           <div className="relative mx-auto w-full max-w-sm py-6 lg:max-w-none">

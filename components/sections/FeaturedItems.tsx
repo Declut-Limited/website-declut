@@ -6,6 +6,7 @@ import { FiArrowRight } from "react-icons/fi";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import FadeIn from "@/components/ui/FadeIn";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -58,7 +59,7 @@ export default function FeaturedItems() {
       className="scroll-mt-24 bg-primary-25 py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto max-w-2xl text-center">
+        <FadeIn className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
             Featured Items
           </h2>
@@ -66,10 +67,10 @@ export default function FeaturedItems() {
             Discover top picks from our carefully curated collection of
             quality items. We&apos;ve got something special waiting for you.
           </p>
-        </div>
+        </FadeIn>
 
         <div className="mt-16 grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-12">
-          <div className="order-2 text-center lg:order-1 lg:text-left">
+          <FadeIn className="order-2 text-center lg:order-1 lg:text-left">
             <h3 className="text-3xl font-extrabold text-ink sm:text-4xl">
               Discover Your Hidden Gems
             </h3>
@@ -88,7 +89,7 @@ export default function FeaturedItems() {
                 aria-hidden="true"
               />
             </a>
-          </div>
+          </FadeIn>
 
           <div className="relative order-1 mx-auto aspect-6/5 w-full max-w-sm lg:order-2 lg:mx-0 lg:max-w-none">
             <div

@@ -1,4 +1,5 @@
 import { FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
+import FadeIn from "@/components/ui/FadeIn";
 
 const socialLinks = [
   { icon: FaInstagram, label: "Instagram", href: "#" },
@@ -16,7 +17,7 @@ export default function Footer() {
   return (
     <footer className="bg-primary-darker pb-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <FadeIn className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div>
             <p className="text-2xl font-extrabold text-white">Declut</p>
             <div className="mt-5 flex items-center gap-3">
@@ -72,7 +73,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </footer>
   );
