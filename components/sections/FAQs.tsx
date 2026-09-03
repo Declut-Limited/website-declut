@@ -4,8 +4,49 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiPlus } from "react-icons/fi";
 import FadeIn from "@/components/ui/FadeIn";
+import { getAppStage } from "@/lib/app-stage";
 
-const faqs = [
+const stage = getAppStage();
+
+const waitlistFaqs = [
+  {
+    question: "When will Declut launch?",
+    answer:
+      "We're putting the finishing touches on Declut and expect to launch soon. Join the waitlist and we'll email you the moment it's live.",
+  },
+  {
+    question: "What is Declut?",
+    answer:
+      "Declut is a local marketplace for buying and selling pre-loved household items - furniture, electronics, appliances, and more - quickly and securely.",
+  },
+  {
+    question: "What happens when I join the waitlist?",
+    answer:
+      "You'll get early access ahead of the public launch, plus occasional updates on our progress. We'll notify you by email as soon as Declut is ready.",
+  },
+  {
+    question: "Does joining the waitlist cost anything?",
+    answer:
+      "No. Joining the waitlist is completely free, and there's no obligation to use Declut once it launches.",
+  },
+  {
+    question: "Can I use Declut to buy and sell?",
+    answer:
+      "Yes. Declut is built for both buyers and sellers - you can browse listings, sell items you no longer need, or do both.",
+  },
+  {
+    question: "Will my transactions be protected?",
+    answer:
+      "Yes. Every transaction on Declut goes through a secure, protected payment process designed to keep both buyers and sellers safe.",
+  },
+  {
+    question: "How will you use my information?",
+    answer:
+      "We'll only use your email to send launch updates and early-access details. We won't share your information with third parties or spam you.",
+  },
+];
+
+const liveFaqs = [
   {
     question: "How do I list my item for sale on Declut?",
     answer:
@@ -35,18 +76,18 @@ const faqs = [
 
 export default function FAQs() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const faqs = stage === "waitlist" ? waitlistFaqs : liveFaqs;
 
   return (
-    <section id="faqs" className="scroll-mt-24 bg-background-light py-20 lg:py-28">
+    <section id="faqs" className="scroll-mt-24 bg-[#FCFCFD] py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
-            FAQs
-          </h2>
-          <p className="mt-4 text-sm text-ink/50 sm:text-base">
-            Explore our comprehensive FAQ section to discover everything you
-            need to know about using Declut for buying and selling.
+        <FadeIn>
+          <p className="text-xs font-bold uppercase tracking-wide text-primary">
+            Need Answers?
           </p>
+          <h2 className="mt-2 text-2xl font-extrabold text-ink sm:text-3xl">
+            Frequently Asked Questions
+          </h2>
         </FadeIn>
 
         <motion.div
@@ -54,7 +95,7 @@ export default function FAQs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-16 max-w-4xl overflow-hidden rounded-3xl bg-white"
+          className="mt-10 overflow-hidden rounded-3xl bg-white"
         >
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -70,17 +111,19 @@ export default function FAQs() {
                     aria-expanded={isOpen}
                     aria-controls={`faq-panel-${index}`}
                     id={`faq-header-${index}`}
-                    className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset sm:px-8"
+                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset sm:px-8"
                   >
                     <span className="text-sm font-bold text-ink">{faq.question}</span>
                     <motion.span
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.2 }}
-                      className={`flex h-6 w-6 shrink-0 items-center justify-center transition-colors ${
-                        isOpen ? "text-primary" : "text-ink"
+                      className={`flex size-9 shrink-0 items-center justify-center rounded-lg border transition-colors ${
+                        isOpen
+                          ? "border-primary text-primary"
+                          : "border-ink/15 text-ink"
                       }`}
                     >
-                      <FiPlus size={20} aria-hidden="true" />
+                      <FiPlus size={16} aria-hidden="true" />
                     </motion.span>
                   </button>
                 </h3>

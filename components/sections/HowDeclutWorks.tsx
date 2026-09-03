@@ -1,9 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import FadeIn from "@/components/ui/FadeIn";
+import WaitlistModal from "@/components/ui/WaitlistModal";
+import AppDownloadModal from "@/components/ui/AppDownloadModal";
+import { getAppStage } from "@/lib/app-stage";
+
+const stage = getAppStage();
 
 const steps = [
   {
@@ -43,6 +49,8 @@ const itemVariants = {
 };
 
 export default function HowDeclutWorks() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section id="how-it-works" className="scroll-mt-24 bg-white py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -56,8 +64,9 @@ export default function HowDeclutWorks() {
             </h2>
           </FadeIn>
 
-          <a
-            href="#"
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(true)}
             className="group mb-1 flex items-center gap-1.5 text-sm font-semibold text-primary"
           >
             Watch a demo
@@ -65,7 +74,7 @@ export default function HowDeclutWorks() {
               className="transition-transform duration-200 group-hover:translate-x-1"
               aria-hidden="true"
             />
-          </a>
+          </button>
         </div>
 
         <motion.div
@@ -92,6 +101,12 @@ export default function HowDeclutWorks() {
           ))}
         </motion.div>
       </div>
+
+      {stage === "waitlist" ? (
+        <WaitlistModal open={isModalOpen} onOpenChange={setIsModalOpen} />
+      ) : (
+        <AppDownloadModal open={isModalOpen} onOpenChange={setIsModalOpen} />
+      )}
     </section>
   );
 }
