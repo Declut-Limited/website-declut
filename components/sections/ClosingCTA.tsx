@@ -19,7 +19,7 @@ export default function ClosingCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-[2.5rem] px-6 py-16 text-center sm:px-12 lg:py-20"
+          className="relative overflow-hidden rounded-[2.5rem] px-6 py-16 text-center before:pointer-events-none before:absolute before:-bottom-30 before:right-4 before:h-100 before:w-20 before:rotate-45 before:rounded-full before:bg-white/10 before:content-[''] after:pointer-events-none after:absolute after:-bottom-34 after:right-40 after:h-100 after:w-20 after:rotate-45 after:rounded-full after:bg-white/[0.07] after:content-[''] sm:px-12 lg:py-20"
           style={{
             background:
               "linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #1D4ED8 100%)",
@@ -33,34 +33,6 @@ export default function ClosingCTA() {
                 "radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.28) 25%, rgba(219,234,254,0.16) 45%, rgba(147,197,253,0.08) 62%, transparent 78%)",
             }}
           />
-
-          <svg
-            aria-hidden="true"
-            className="pointer-events-none absolute bottom-0 right-0 h-full w-2/5"
-            viewBox="0 0 200 200"
-            preserveAspectRatio="xMaxYMax slice"
-            fill="none"
-          >
-            <defs>
-              <linearGradient id="cta-facet-fade" x1="1" y1="1" x2="0" y2="0">
-                <stop offset="0%" stopColor="white" stopOpacity="0.85" />
-                <stop offset="75%" stopColor="white" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="white" stopOpacity="0" />
-              </linearGradient>
-              <mask id="cta-facet-mask">
-                <rect width="200" height="200" fill="url(#cta-facet-fade)" />
-              </mask>
-            </defs>
-            <g mask="url(#cta-facet-mask)" strokeLinecap="round">
-              {/* <line x1="-40" y1="220" x2="220" y2="-40" stroke="#93C5FD" strokeWidth="2" /> */}
-              <line x1="-10" y1="220" x2="220" y2="-10" stroke="#1D4ED8" strokeWidth="3" />
-              {/* <line x1="20" y1="220" x2="220" y2="20" stroke="#93C5FD" strokeWidth="1.5" /> */}
-              <line x1="50" y1="220" x2="220" y2="50" stroke="#1D4ED8" strokeWidth="4" />
-              {/* <line x1="80" y1="220" x2="220" y2="80" stroke="#93C5FD" strokeWidth="2" /> */}
-              <line x1="110" y1="220" x2="220" y2="110" stroke="#1D4ED8" strokeWidth="2.5" />
-              {/* <line x1="140" y1="220" x2="220" y2="140" stroke="#93C5FD" strokeWidth="1.5" /> */}
-            </g>
-          </svg>
 
           <div className="relative z-10 mx-auto max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-wide text-white">
