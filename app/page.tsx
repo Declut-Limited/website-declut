@@ -3,9 +3,8 @@ import AnnouncementBanner from "@/components/ui/AnnouncementBanner";
 import Hero from "@/components/sections/Hero";
 import SocialProofBand from "@/components/sections/SocialProofBand";
 import FeaturedItems from "@/components/sections/FeaturedItems";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
-import BenefitsForSellers from "@/components/sections/BenefitsForSellers";
-import BenefitsForBuyers from "@/components/sections/BenefitsForBuyers";
+// import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import WhyDeclut from "@/components/sections/WhyDeclut";
 import HowDeclutWorks from "@/components/sections/HowDeclutWorks";
 import FAQs from "@/components/sections/FAQs";
 import AboutUs from "@/components/sections/AboutUs";
@@ -23,9 +22,7 @@ export default function Home() {
         <Hero />
         <SocialProofBand />
         <FeaturedItems />
-        <WhyChooseUs />
-        <BenefitsForSellers />
-        <BenefitsForBuyers />
+        <WhyDeclut />
         <HowDeclutWorks />
         <FAQs />
         <AboutUs />
