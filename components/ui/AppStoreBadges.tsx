@@ -24,7 +24,13 @@ const badges = [
   },
 ];
 
-export default function AppStoreBadges({ className = "" }: { className?: string }) {
+export default function AppStoreBadges({
+  className = "",
+  variant = "dark",
+}: {
+  className?: string;
+  variant?: "dark" | "light";
+}) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       {badges.map((badge) => (
@@ -35,7 +41,11 @@ export default function AppStoreBadges({ className = "" }: { className?: string 
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className={`flex items-center gap-2 rounded-full px-4 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+            variant === "dark"
+              ? "bg-black text-white focus-visible:ring-primary focus-visible:ring-offset-background"
+              : "bg-white text-ink focus-visible:ring-white focus-visible:ring-offset-primary"
+          }`}
         >
           <Image
             src={badge.icon}
@@ -45,7 +55,9 @@ export default function AppStoreBadges({ className = "" }: { className?: string 
             className="h-5 w-auto"
           />
           <span className="flex flex-col items-start leading-none">
-            <span className="text-[9px]">{badge.eyebrow}</span>
+            <span className={`text-[9px] ${variant === "light" ? "text-ink/50" : ""}`}>
+              {badge.eyebrow}
+            </span>
             <span className="text-sm font-semibold">{badge.label}</span>
           </span>
         </motion.a>

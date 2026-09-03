@@ -52,7 +52,7 @@ export default function Navbar() {
             priority
             className="rounded-full"
           />
-          <span className="text-base font-extrabold text-ink">Declut</span>
+          <span className="text-sm font-extrabold text-ink">Declut</span>
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -110,7 +110,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => handleNavClick(link.href)}
-                    className={`block rounded-md px-2 py-2 text-sm font-medium ${
+                    className={`block rounded-md px-2 py-2 text-md font-medium ${
                       active === link.href ? "text-primary" : "text-ink/80"
                     }`}
                   >
@@ -122,7 +122,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={openCtaModal}
-                  className="inline-block w-full rounded-full bg-primary-50 px-5 py-2 text-center text-xs font-semibold text-primary transition-colors hover:bg-primary-100"
+                  className="inline-block w-full rounded-full bg-primary-50 px-5 py-2 text-center text-md font-semibold text-primary transition-colors hover:bg-primary-100"
                 >
                   {ctaLabel}
                 </button>

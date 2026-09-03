@@ -26,8 +26,8 @@ export default function Home() {
         <HowDeclutWorks />
         <FAQs />
         <AboutUs />
-        <Testimonials />
         <ClosingCTA />
+        <Testimonials />
       </main>
       <Footer />
     </React.Fragment>

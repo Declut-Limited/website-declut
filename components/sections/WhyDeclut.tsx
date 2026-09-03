@@ -121,7 +121,7 @@ export default function WhyDeclut() {
                     variants={prefersReducedMotion ? undefined : cardVariants}
                     initial={prefersReducedMotion ? undefined : "hidden"}
                     animate="visible"
-                    className={`flex items-center gap-4 rounded-2xl p-6 ${
+                    className={`flex items-center gap-4 rounded-2xl p-4 ${
                       isFeatured ? "bg-[#93C5FD] text-ink" : "bg-white"
                     }`}
                   >
@@ -130,7 +130,7 @@ export default function WhyDeclut() {
                         isFeatured ? "bg-white" : "bg-[#F2F4F7]"
                       }`}
                     >
-                      <Image src={stepIcons[index]} alt="" width={32} height={32} className="w-100 h-100" />
+                      <Image src={stepIcons[index]} alt="" width={32} height={32} className="w-120 h-120" />
                     </span>
                     <div>
                       <h3 className="font-bold">{benefit.title}</h3>
