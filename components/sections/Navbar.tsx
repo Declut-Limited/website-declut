@@ -10,9 +10,9 @@ import WaitlistModal from "@/components/ui/WaitlistModal";
 import AppDownloadModal from "@/components/ui/AppDownloadModal";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#how-it-works", label: "How Declut Works" },
-  { href: "#about", label: "About Us" },
+  { href: "/#home", label: "Home" },
+  { href: "/#how-it-works", label: "How Declut Works" },
+  { href: "/#about", label: "About Us" },
 ];
 
 const stage = getAppStage();
@@ -20,7 +20,7 @@ const ctaLabel = stage === "waitlist" ? "Join Waitlist" : "Get the App";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState("#home");
+  const [active, setActive] = useState("/#home");
   const [isCtaModalOpen, setIsCtaModalOpen] = useState(false);
 
   const handleNavClick = (href: string) => {
@@ -37,11 +37,11 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-background-light/90 backdrop-blur-sm">
       <nav
         aria-label="Primary"
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-10"
+        className="mx-auto flex max-w-300 items-center justify-between px-6 py-3 lg:px-10"
       >
         <Link
-          href="#home"
-          onClick={() => handleNavClick("#home")}
+          href="/#home"
+          onClick={() => handleNavClick("/#home")}
           className="flex items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           <Image
@@ -52,7 +52,7 @@ export default function Navbar() {
             priority
             className="rounded-full"
           />
-          <span className="text-sm font-extrabold text-ink">Declut</span>
+          <span className="text-base font-extrabold text-ink">Declut</span>
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -62,7 +62,7 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
                 aria-current={active === link.href ? "page" : undefined}
-                className={`relative text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm ${
+                className={`relative text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm ${
                   active === link.href
                     ? "text-primary"
                     : "text-ink/80 hover:text-primary"
@@ -77,7 +77,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={openCtaModal}
-          className="hidden rounded-full bg-primary-50 px-5 py-2 text-xs font-semibold text-primary shadow-sm transition-colors hover:bg-primary-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:block"
+          className="hidden rounded-full bg-primary-50 px-6 py-2.5 text-sm font-semibold text-primary shadow-sm transition-colors hover:bg-primary-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:block"
         >
           {ctaLabel}
         </button>
@@ -110,7 +110,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => handleNavClick(link.href)}
-                    className={`block rounded-md px-2 py-2 text-md font-medium ${
+                    className={`block rounded-md px-2 py-2 text-base font-medium ${
                       active === link.href ? "text-primary" : "text-ink/80"
                     }`}
                   >
@@ -122,7 +122,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={openCtaModal}
-                  className="inline-block w-full rounded-full bg-primary-50 px-5 py-2 text-center text-md font-semibold text-primary transition-colors hover:bg-primary-100"
+                  className="inline-block w-full rounded-full bg-primary-50 px-5 py-2.5 text-center text-base font-semibold text-primary transition-colors hover:bg-primary-100"
                 >
                   {ctaLabel}
                 </button>

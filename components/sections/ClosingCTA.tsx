@@ -13,7 +13,7 @@ export default function ClosingCTA() {
 
   return (
     <section id="get-started" className="scroll-mt-24 bg-white py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-300 px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

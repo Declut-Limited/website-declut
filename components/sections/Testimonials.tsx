@@ -93,7 +93,7 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="scroll-mt-24 bg-[#FCFCFD] py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-300 px-6 lg:px-10">
         <div className="relative">
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-wide text-primary">

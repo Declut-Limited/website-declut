@@ -1,0 +1,15 @@
+import type { ReactNode } from "react";
+import Navbar from "@/components/sections/Navbar";
+import Footer from "@/components/Footer";
+
+export default function LegalLayout({ children }: { children: ReactNode }) {
+  return (
+    <>
+      <Navbar />
+      <main className="mx-auto max-w-300 px-6 py-16 lg:px-10 lg:py-20">
+        {children}
+      </main>
+      <Footer />
+    </>
+  );
+}

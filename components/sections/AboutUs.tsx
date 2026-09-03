@@ -47,7 +47,7 @@ export default function AboutUs() {
         className="pointer-events-none absolute bottom-0 left-0 size-80 -translate-x-1/3 translate-y-1/3 rounded-full border border-white/10"
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-16 lg:px-10">
+      <div className="relative mx-auto max-w-300 px-6 pt-16 lg:px-10">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}

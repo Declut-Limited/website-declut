@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Icon from "@/components/ui/Icon";
@@ -41,15 +42,15 @@ const contactDetails = [
 ];
 
 const policyLinks = [
-  { label: "Terms of Use", href: "#" },
-  { label: "Privacy Policy", href: "#" },
-  { label: "Refund Policy", href: "#" },
+  { label: "Terms of Use", href: "/terms-of-use" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Refund Policy", href: "/refund-policy" },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-[#0A0A0C] py-10 lg:py-12">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-300 px-6 lg:px-10">
         <FadeIn className="flex flex-col justify-between gap-12 lg:flex-row lg:gap-16">
           <div className="max-w-md">
             <div className="flex items-center gap-2">
@@ -121,9 +122,9 @@ export default function Footer() {
               {policyLinks.map((link, index) => (
                 <span key={link.label} className="flex items-center gap-2">
                   {index > 0 && <span aria-hidden="true">|</span>}
-                  <a href={link.href} className="transition-colors hover:text-white">
+                  <Link href={link.href} className="transition-colors hover:text-white">
                     {link.label}
-                  </a>
+                  </Link>
                 </span>
               ))}
             </div>

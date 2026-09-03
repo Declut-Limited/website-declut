@@ -81,7 +81,7 @@ export default function GetInTouch() {
 
   return (
     <section id="contact" className="scroll-mt-24 bg-white py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-300 px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <FadeIn className="relative">
             <div className="relative aspect-4/3 overflow-hidden rounded-[2rem]">

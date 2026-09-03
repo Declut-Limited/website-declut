@@ -79,7 +79,7 @@ export default function FeaturedItems() {
 
   return (
     <section id="featured-items" className="scroll-mt-24 bg-primary-25 py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-300 px-6 lg:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-wide text-primary">

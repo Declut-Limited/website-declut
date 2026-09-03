@@ -23,7 +23,7 @@ const stats = [
 export default function SocialProofBand() {
   return (
     <section className="bg-ink py-5">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-300 px-6 lg:px-10">
         {stage === "waitlist" ? (
           <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-white/70">
             <span className="flex -space-x-2" aria-hidden="true">

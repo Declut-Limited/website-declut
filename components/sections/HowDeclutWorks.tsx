@@ -53,7 +53,7 @@ export default function HowDeclutWorks() {
 
   return (
     <section id="how-it-works" className="scroll-mt-24 bg-white py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-300 px-6 lg:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-wide text-primary">

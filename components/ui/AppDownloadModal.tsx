@@ -35,6 +35,7 @@ export default function AppDownloadModal({
           alt="QR code to download the Declut app"
           width={1600}
           height={1600}
+          priority
           className="mx-auto h-auto w-full max-w-100"
         />
       </DialogContent>
