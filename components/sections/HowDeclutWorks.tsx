@@ -1,73 +1,35 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { FiArrowRight } from "react-icons/fi";
 import FadeIn from "@/components/ui/FadeIn";
 
-const sellerSteps = [
+const steps = [
   {
-    title: "Sign up",
-    description: "Register an account on Declut and list your items for sale.",
-  },
-  {
-    title: "Wait for Interest",
-    description: "Await potential buyers to show interest in your listings.",
-  },
-  {
-    title: "Secure Payment Process",
+    image: "/images/illustration-one.png",
+    title: "List It",
     description:
-      "Buyers commit to purchasing items through a secure payment process managed by Declut.",
+      "Take a photo, write a short description, set your price. Live in under 60 seconds.",
   },
   {
-    title: "Arrange Meeting",
+    image: "/images/illustration-two.png",
+    title: "Sell It",
     description:
-      "Coordinate with buyer to arrange for inspection and pickup of the item.",
+      "Chat with interested buyers, agree on a time, and confirm the handoff inside the app.",
   },
   {
-    title: "Meet the Buyer",
+    image: "/images/illustration-three.png",
+    title: "Hand It Over",
     description:
-      "Arrange to meet the buyer at a mutually agreed location for the transaction",
-  },
-  {
-    title: "Transaction Completion",
-    description:
-      "Upon buyer satisfaction, finalize the transaction securely through Declut.",
-  },
-];
-
-const buyerSteps = [
-  {
-    title: "Sign up",
-    description:
-      "Register an account on Declut, browse through the listings to find items of interest.",
-  },
-  {
-    title: "Express Interest",
-    description: "Express interest in an item and initiate the purchase process.",
-  },
-  {
-    title: "Secure Payment",
-    description: "Complete the payment securely through Declut's platform.",
-  },
-  {
-    title: "Arrange Inspection",
-    description:
-      "Coordinate with the seller to arrange for inspection and collection.",
-  },
-  {
-    title: "Meet the Seller",
-    description:
-      "Meet the seller at a designated location to inspect and collect the item.",
-  },
-  {
-    title: "Transaction Completion",
-    description: "Upon satisfaction, finalize the transaction securely through Declut",
+      "Meet locally, hand it over, get paid instantly. Both sides leave a review.",
   },
 ];
 
 const listVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.12 },
   },
 };
 
@@ -76,82 +38,59 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
-function StepList({
-  label,
-  steps,
-  badgeBg,
-  badgeText,
-}: {
-  label: string;
-  steps: { title: string; description: string }[];
-  badgeBg: string;
-  badgeText: string;
-}) {
-  return (
-    <div>
-      <p className="text-sm font-semibold uppercase tracking-wide text-ink/50">
-        {label}
-      </p>
-      <motion.ol
-        variants={listVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="mt-6 flex flex-col gap-8"
-      >
-        {steps.map((step, index) => (
-          <motion.li key={step.title} variants={itemVariants} className="flex gap-5">
-            <span
-              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold ${badgeBg} ${badgeText}`}
-              aria-hidden="true"
-            >
-              {index + 1}
-            </span>
-            <div>
-              <h4 className="text-sm font-bold text-ink">{step.title}</h4>
-              <p className="mt-1.5 text-xs text-ink/60">{step.description}</p>
-            </div>
-          </motion.li>
-        ))}
-      </motion.ol>
-    </div>
-  );
-}
-
 export default function HowDeclutWorks() {
   return (
-    <section
-      id="how-it-works"
-      className="scroll-mt-24 bg-background py-20 lg:py-28"
-    >
+    <section id="how-it-works" className="scroll-mt-24 bg-white py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
-            How Declut Works
-          </h2>
-          <p className="mt-4 text-sm text-ink/50 sm:text-base">
-            Unlock the simplicity of decluttering with our step-by-step guide
-          </p>
-        </FadeIn>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <FadeIn>
+            <p className="text-xs font-bold uppercase tracking-wide text-primary">
+              Simple Process
+            </p>
+            <h2 className="mt-2 text-2xl font-extrabold text-ink sm:text-3xl">
+              How It Works
+            </h2>
+          </FadeIn>
 
-        <div className="mt-16 grid gap-16 lg:grid-cols-2 lg:gap-12">
-          <StepList
-            label="For Sellers"
-            steps={sellerSteps}
-            badgeBg="bg-primary-50"
-            badgeText="text-primary"
-          />
-          <StepList
-            label="For Buyers"
-            steps={buyerSteps}
-            badgeBg="bg-accent-50"
-            badgeText="text-accent-primary"
-          />
+          <a
+            href="#"
+            className="group mb-1 flex items-center gap-1.5 text-sm font-semibold text-primary"
+          >
+            Watch a demo
+            <FiArrowRight
+              className="transition-transform duration-200 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
+          </a>
         </div>
+
+        <motion.div
+          variants={listVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-12 grid gap-10 sm:grid-cols-3"
+        >
+          {steps.map((step) => (
+            <motion.div key={step.title} variants={itemVariants} className="text-center">
+              <Image
+                src={step.image}
+                alt=""
+                width={360}
+                height={280}
+                className="mx-auto w-full max-w-34"
+              />
+              <h3 className="mt-4 font-bold text-ink">{step.title}</h3>
+              <p className="mx-auto mt-2 max-w-xs text-sm text-ink/60">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
