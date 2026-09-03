@@ -16,8 +16,8 @@ const avatarStack = [
 
 const stats = [
   { value: "4.9", iconSrc: "/svg/star.svg", label: "Average app rating" },
-  { value: "50K+", icon: "people" as const, iconColor: "#2563eb", label: "Active declutters" },
-  { value: "300K+", icon: "box" as const, iconColor: "#ffffff", label: "Items given a second life" },
+  { value: "50K+", icon: "/svg/users.svg" as const, iconColor: "#2563eb", label: "Active declutters" },
+  { value: "300K+", icon: "/svg/box.svg" as const, iconColor: "#ffffff", label: "Items given a second life" },
 ];
 
 export default function SocialProofBand() {

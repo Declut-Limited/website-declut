@@ -9,6 +9,7 @@ import HowDeclutWorks from "@/components/sections/HowDeclutWorks";
 import FAQs from "@/components/sections/FAQs";
 import AboutUs from "@/components/sections/AboutUs";
 import Testimonials from "@/components/sections/Testimonials";
+import GetInTouch from "@/components/sections/GetInTouch";
 import ClosingCTA from "@/components/sections/ClosingCTA";
 import Footer from "@/components/Footer";
 import React from "react";
@@ -28,6 +29,7 @@ export default function Home() {
         <AboutUs />
         <ClosingCTA />
         <Testimonials />
+        <GetInTouch />
       </main>
       <Footer />
     </React.Fragment>

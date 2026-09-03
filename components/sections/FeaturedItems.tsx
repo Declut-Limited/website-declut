@@ -133,7 +133,7 @@ export default function FeaturedItems() {
           >
             {products.map((product) => (
               <motion.div key={product.title} variants={itemVariants}>
-                <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
+                <div className="relative aspect-4/2 overflow-hidden rounded-2xl">
                   <Image
                     src={product.image}
                     alt={product.alt}

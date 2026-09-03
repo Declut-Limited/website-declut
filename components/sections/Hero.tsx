@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import Icon from "@/components/ui/Icon";
 import AppStoreBadges from "@/components/ui/AppStoreBadges";
 import WaitlistModal from "@/components/ui/WaitlistModal";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
@@ -85,9 +84,7 @@ export default function Hero() {
         ref={leftBadgeRef}
         className="absolute left-4 top-[30%] z-10 hidden items-center gap-1.5 rounded-full bg-white px-3 py-2 shadow-lg sm:flex lg:left-[10%]"
       >
-        <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary">
-          <Icon name="flash" variant="bold" size={11} color="#ffffff" />
-        </span>
+        <Image src="/svg/flash-circle.svg" alt="" width={22} height={22} />
         <span className="text-xs font-semibold text-ink">Sold in 2 hrs</span>
       </div>
 
@@ -95,9 +92,7 @@ export default function Hero() {
         ref={rightBadgeRef}
         className="absolute right-4 top-[52%] z-10 hidden items-center gap-1.5 rounded-full bg-white px-3 py-2 shadow-lg sm:flex lg:right-[10%]"
       >
-        <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-peach">
-          <Icon name="location" variant="bold" size={11} color="#ffffff" />
-        </span>
+        <Image src="/svg/tag-2.svg" alt="" width={11} height={11} />
         <span className="text-xs font-semibold text-ink">Free to list</span>
       </div>
 

@@ -12,7 +12,7 @@ export default function ClosingCTA() {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   return (
-    <section id="contact" className="scroll-mt-24 bg-white py-16 lg:py-20">
+    <section id="get-started" className="scroll-mt-24 bg-white py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
