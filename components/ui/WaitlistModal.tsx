@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-const WAITLIST_API_BASE_URL = process.env.NEXT_PUBLIC_WAITLIST_API_BASE_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 type Interest = "buying" | "selling" | "both";
 
@@ -66,14 +66,14 @@ export default function WaitlistModal({
     setStatus("submitting");
     setErrorMessage("");
 
-    if (!WAITLIST_API_BASE_URL) {
+    if (!API_BASE_URL) {
       setStatus("error");
       setErrorMessage("Waitlist signup isn't configured right now. Please try again later.");
       return;
     }
 
     try {
-      const response = await fetch(`${WAITLIST_API_BASE_URL}/waitlist`, {
+      const response = await fetch(`${API_BASE_URL}/waitlist`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, interest }),

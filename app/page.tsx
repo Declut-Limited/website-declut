@@ -1,6 +1,7 @@
 import Navbar from "@/components/sections/Navbar";
 import AnnouncementBanner from "@/components/ui/AnnouncementBanner";
 import Hero from "@/components/sections/Hero";
+import SocialProofBand from "@/components/sections/SocialProofBand";
 import FeaturedItems from "@/components/sections/FeaturedItems";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import BenefitsForSellers from "@/components/sections/BenefitsForSellers";
@@ -20,6 +21,7 @@ export default function Home() {
       <AnnouncementBanner />
       <main>
         <Hero />
+        <SocialProofBand />
         <FeaturedItems />
         <WhyChooseUs />
         <BenefitsForSellers />

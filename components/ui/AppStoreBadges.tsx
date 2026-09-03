@@ -26,14 +26,14 @@ export default function AppStoreBadges({ className = "" }: { className?: string 
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="block overflow-hidden rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <Image
             src={badge.src}
             alt={badge.alt}
             width={150}
             height={44}
-            className="h-11 w-auto rounded-lg"
+            className="h-11 w-auto rounded-full"
           />
         </motion.a>
       ))}

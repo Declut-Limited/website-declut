@@ -1,138 +1,168 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import FadeIn from "@/components/ui/FadeIn";
+import AppDownloadModal from "@/components/ui/AppDownloadModal";
+import { getAppStage } from "@/lib/app-stage";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+const stage = getAppStage();
+
+const whyJoinCards = [
+  {
+    icon: "/svg/key.svg",
+    title: "Early access",
+    description: "Be among the first to experience the new Declut.",
+  },
+  {
+    icon: "/svg/shop.svg",
+    title: "Local marketplace",
+    description: "Discover buyers, sellers and quality finds near you.",
+  },
+  {
+    icon: "/svg/security.svg",
+    title: "No spam",
+    description: "Only useful early-access and launch updates.",
+  },
+];
+
+const products = [
+  {
+    image: "/images/featured-3.png",
+    alt: "Hisense 1.5HP air conditioning unit",
+    title: "Hisense 1.5HP Air Conditioner",
+    price: "245,000",
+    distance: "0.4 km",
+    condition: "Excellent",
+    conditionColor: "text-lavender",
+  },
+  {
+    image: "/images/featured-1.png",
+    alt: "Apple MacBook Pro on a desk",
+    title: "Apple MacBook Pro 2021",
+    price: "855,000",
+    distance: "3.7 km",
+    condition: "Good",
+    conditionColor: "text-peach",
+  },
+  {
+    image: "/images/featured-2.png",
+    alt: "Orange fabric sofa with a pink cushion",
+    title: "Orange Fabric Sofa Set",
+    price: "480,000",
+    distance: "2.3 km",
+    condition: "Neatly Used",
+    conditionColor: "text-accent-primary",
+  },
+];
+
+const listVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
 
 export default function FeaturedItems() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const deskRef = useRef<HTMLDivElement>(null);
-  const sofaRef = useRef<HTMLDivElement>(null);
-  const acRef = useRef<HTMLDivElement>(null);
-  const prefersReducedMotion = useReducedMotion();
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          once: true,
-        },
-      });
-
-      tl.from(deskRef.current, {
-        x: -60,
-        opacity: 0,
-        duration: 0.7,
-        ease: "power3.out",
-      })
-        .from(
-          acRef.current,
-          { x: 60, y: -30, opacity: 0, duration: 0.7, ease: "power3.out" },
-          "<0.1"
-        )
-        .from(
-          sofaRef.current,
-          { y: 50, opacity: 0, scale: 0.9, duration: 0.7, ease: "power3.out" },
-          "<0.15"
-        );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
 
   return (
-    <section
-      id="featured-items"
-      ref={sectionRef}
-      className="scroll-mt-24 bg-primary-25 py-20 lg:py-28"
-    >
+    <section id="featured-items" className="scroll-mt-24 bg-primary-25 py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
-            Featured Items
-          </h2>
-          <p className="mt-4 text-sm text-ink/50 sm:text-base">
-            Discover top picks from our carefully curated collection of
-            quality items. We&apos;ve got something special waiting for you.
-          </p>
-        </FadeIn>
-
-        <div className="mt-16 grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-12">
-          <FadeIn className="order-2 text-center lg:order-1 lg:text-left">
-            <h3 className="text-2xl font-extrabold text-ink sm:text-3xl">
-              Discover Your Hidden Gems
-            </h3>
-            <p className="mx-auto mt-4 max-w-md text-sm text-ink/60 lg:mx-0">
-              Explore our handpicked collection of top-rated items. From
-              trendy decor to tech essentials, find something special to
-              enhance your space and simplify your life.
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <FadeIn>
+            <p className="text-xs font-bold uppercase tracking-wide text-primary">
+              {stage === "waitlist" ? "Why join early?" : "Fresh listings"}
             </p>
-            <a
-              href="#"
-              className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary-darker focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-primary-25 rounded-sm"
+            <h2 className="mt-2 text-2xl font-extrabold text-ink sm:text-3xl">
+              {stage === "waitlist"
+                ? "A Simpler Marketplace Is Coming."
+                : "Featured Finds Near You"}
+            </h2>
+          </FadeIn>
+
+          {stage === "live" && (
+            <button
+              type="button"
+              onClick={() => setIsDownloadOpen(true)}
+              className="group mb-1 flex items-center gap-1.5 text-sm font-semibold text-primary"
             >
-              See more featured items
+              Get the App
               <FiArrowRight
                 className="transition-transform duration-200 group-hover:translate-x-1"
                 aria-hidden="true"
               />
-            </a>
-          </FadeIn>
-
-          <div className="relative order-1 mx-auto aspect-6/5 w-full max-w-sm lg:order-2 lg:mx-0 lg:max-w-none">
-            <div
-              ref={deskRef}
-              className="absolute bottom-0 left-0 z-10 aspect-3/4 w-[52%]"
-            >
-              <Image
-                src="/images/featured-1.png"
-                alt="Laptop and monitor set up on a desk"
-                fill
-                sizes="(min-width: 1024px) 300px, 220px"
-                className="rounded-[28px] object-cover shadow-xl"
-              />
-            </div>
-
-            <div
-              ref={acRef}
-              className="absolute right-0 top-0 z-20 aspect-3/4 w-[52%]"
-            >
-              <Image
-                src="/images/featured-3.png"
-                alt="Outdoor air conditioning unit"
-                fill
-                sizes="(min-width: 1024px) 300px, 220px"
-                className="rounded-[28px] object-cover shadow-xl"
-              />
-            </div>
-
-            <div
-              ref={sofaRef}
-              className="absolute left-[26%] top-[8%] z-30 aspect-3/4 w-[52%]"
-            >
-              <Image
-                src="/images/featured-2.png"
-                alt="Orange sofa with a pink cushion"
-                fill
-                sizes="(min-width: 1024px) 310px, 230px"
-                className="rounded-[28px] object-cover shadow-2xl"
-              />
-            </div>
-          </div>
+            </button>
+          )}
         </div>
+
+        {stage === "waitlist" ? (
+          <motion.div
+            variants={listVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="mt-10 grid gap-8 sm:grid-cols-3"
+          >
+            {whyJoinCards.map((card) => (
+              <motion.div key={card.title} variants={itemVariants} className="text-center">
+                <Image src={card.icon} alt="" width={40} height={40} className="mx-auto" />
+                <h3 className="mt-3 text-base font-bold text-ink">{card.title}</h3>
+                <p className="mt-1.5 text-sm text-ink/60">{card.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            variants={listVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="mt-10 grid gap-6 sm:grid-cols-3"
+          >
+            {products.map((product) => (
+              <motion.div key={product.title} variants={itemVariants}>
+                <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
+                  <Image
+                    src={product.image}
+                    alt={product.alt}
+                    fill
+                    sizes="(min-width: 640px) 33vw, 100vw"
+                    className="object-cover"
+                  />
+                  <span
+                    className={`absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-semibold shadow-sm ${product.conditionColor}`}
+                  >
+                    {product.condition}
+                  </span>
+                </div>
+                <p className="mt-3 text-sm text-ink/70">{product.title}</p>
+                <div className="mt-1 flex items-center justify-between">
+                  <p className="font-bold text-ink">
+                    <span aria-hidden="true">₦</span> {product.price}
+                  </p>
+                  <p className="text-xs text-ink/40">{product.distance}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
+
+      {stage === "live" && (
+        <AppDownloadModal open={isDownloadOpen} onOpenChange={setIsDownloadOpen} />
+      )}
     </section>
   );
 }
