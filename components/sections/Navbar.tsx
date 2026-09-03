@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
+import { getAppStage } from "@/lib/app-stage";
+import WaitlistModal from "@/components/ui/WaitlistModal";
+import AppDownloadModal from "@/components/ui/AppDownloadModal";
 
 const navLinks = [
   { href: "#home", label: "Home" },
@@ -12,16 +15,22 @@ const navLinks = [
   { href: "#about", label: "About Us" },
 ];
 
-const IS_WAITLIST_STAGE = (process.env.APP_STAGE === "waitlist" ? true : false);
+const stage = getAppStage();
+const ctaLabel = stage === "waitlist" ? "Join Waitlist" : "Get the App";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [modalType, setModalType] = useState(""); // waitlist | app
   const [active, setActive] = useState("#home");
+  const [isCtaModalOpen, setIsCtaModalOpen] = useState(false);
 
   const handleNavClick = (href: string) => {
     setActive(href);
     setIsOpen(false);
+  };
+
+  const openCtaModal = () => {
+    setIsOpen(false);
+    setIsCtaModalOpen(true);
   };
 
   return (
@@ -30,8 +39,20 @@ export default function Navbar() {
         aria-label="Primary"
         className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10"
       >
-        <Link href="#home" onClick={() => handleNavClick("#home")} className="flex items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-          <Image src="/svg/logo.svg" alt="Declut" width={44} height={44} priority />
+        <Link
+          href="#home"
+          onClick={() => handleNavClick("#home")}
+          className="flex items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          <Image
+            src="/svg/logo.svg"
+            alt=""
+            width={36}
+            height={36}
+            priority
+            className="rounded-lg"
+          />
+          <span className="text-lg font-extrabold text-ink">Declut</span>
         </Link>
 
         <ul className="hidden items-center gap-9 md:flex">
@@ -53,12 +74,16 @@ export default function Navbar() {
           ))}
         </ul>
 
-       <button
-          onClick={() => setIsOpen(false)}
-          className="inline-block rounded-full bg-primary-50 px-6 py-2.5 text-center text-sm font-semibold text-primary transition-colors hover:bg-gold-primary-dark"
+        <motion.button
+          type="button"
+          onClick={openCtaModal}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          className="hidden rounded-full bg-primary-50 px-6 py-2.5 text-sm font-semibold text-primary shadow-sm transition-colors hover:bg-primary-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:block"
         >
-          {IS_WAITLIST_STAGE ? "Join Waitlist" : "Get The App"}
-        </button>
+          {ctaLabel}
+        </motion.button>
 
         <button
           type="button"
@@ -97,17 +122,24 @@ export default function Navbar() {
                 </li>
               ))}
               <li className="pt-2">
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="inline-block w-full rounded-full bg-primary-50 px-6 py-2.5 text-center text-sm font-semibold text-primary transition-colors hover:bg-gold-primary-dark"
-                  >
-                    {IS_WAITLIST_STAGE ? "Join Waitlist" : "Get The App"}
-                  </button>
+                <button
+                  type="button"
+                  onClick={openCtaModal}
+                  className="inline-block w-full rounded-full bg-primary-50 px-6 py-2.5 text-center text-sm font-semibold text-primary transition-colors hover:bg-primary-100"
+                >
+                  {ctaLabel}
+                </button>
               </li>
             </ul>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {stage === "waitlist" ? (
+        <WaitlistModal open={isCtaModalOpen} onOpenChange={setIsCtaModalOpen} />
+      ) : (
+        <AppDownloadModal open={isCtaModalOpen} onOpenChange={setIsCtaModalOpen} />
+      )}
     </header>
   );
 }

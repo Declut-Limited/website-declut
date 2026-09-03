@@ -1,11 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import Icon from "@/components/ui/Icon";
 import AppStoreBadges from "@/components/ui/AppStoreBadges";
+import WaitlistModal from "@/components/ui/WaitlistModal";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import { getAppStage } from "@/lib/app-stage";
+
+const stage = getAppStage();
 
 const containerVariants = {
   hidden: {},
@@ -23,131 +28,157 @@ const itemVariants = {
   },
 };
 
+const avatarStack = [
+  { initial: "A", bg: "bg-primary" },
+  { initial: "J", bg: "bg-gold-primary" },
+  { initial: "M", bg: "bg-peach" },
+  { initial: "S", bg: "bg-accent-primary" },
+  { initial: "K", bg: "bg-lavender" },
+];
+
 export default function Hero() {
-  const phoneRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const leftBadgeRef = useRef<HTMLDivElement>(null);
+  const rightBadgeRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   useEffect(() => {
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        phoneRef.current,
-        { opacity: 0, y: 40, scale: 0.96 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "power3.out", delay: 0.2 }
-      );
-      gsap.fromTo(
-        cardRef.current,
-        { opacity: 0, y: 20, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
-          ease: "power3.out",
-          delay: 0.7,
-          onComplete: () => {
-            gsap.to(phoneRef.current, {
-              y: "+=10",
-              duration: 2.6,
-              ease: "sine.inOut",
-              yoyo: true,
-              repeat: -1,
-            });
-            gsap.to(cardRef.current, {
-              y: "-=8",
-              duration: 2.2,
-              ease: "sine.inOut",
-              yoyo: true,
-              repeat: -1,
-              delay: 0.2,
-            });
-          },
-        }
-      );
+      gsap.to(leftBadgeRef.current, {
+        y: "+=10",
+        duration: 2.6,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+      gsap.to(rightBadgeRef.current, {
+        y: "-=10",
+        duration: 2.2,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: 0.3,
+      });
     });
 
     return () => ctx.revert();
   }, [prefersReducedMotion]);
 
   return (
-    <section id="home" className="relative scroll-mt-24 overflow-hidden">
+    <section id="home" className="relative scroll-mt-24 overflow-hidden bg-white">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-10 h-72 w-72 opacity-60 [background-image:radial-gradient(var(--color-primary-100)_1.5px,transparent_1.5px)] [background-size:16px_16px] lg:h-96 lg:w-96"
-      />
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-70"
+      >
+        <Image
+          src="/svg/hero-Illustration.svg"
+          alt=""
+          fill
+          priority
+          className="object-contain"
+        />
+      </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 py-16 lg:grid-cols-2 lg:gap-12 lg:px-10 lg:py-24">
+      <div
+        ref={leftBadgeRef}
+        className="absolute left-4 top-[28%] z-10 hidden items-center gap-2 rounded-full bg-white px-4 py-2.5 shadow-lg sm:flex lg:left-[8%]"
+      >
+        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary">
+          <Icon name="flash" variant="bold" size={14} color="#ffffff" />
+        </span>
+        <span className="text-sm font-semibold text-ink">Sold in 2 hrs</span>
+      </div>
+
+      <div
+        ref={rightBadgeRef}
+        className="absolute right-4 top-[50%] z-10 hidden items-center gap-2 rounded-full bg-white px-4 py-2.5 shadow-lg sm:flex lg:right-[8%]"
+      >
+        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-peach">
+          <Icon name="location" variant="bold" size={14} color="#ffffff" />
+        </span>
+        <span className="text-sm font-semibold text-ink">Free to list</span>
+      </div>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-20 mx-auto flex max-w-2xl flex-col items-center px-6 py-20 text-center lg:py-28"
+      >
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="relative z-10 text-center lg:text-left"
+          variants={itemVariants}
+          className="mb-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wide text-ink/70 shadow-sm"
         >
-          <motion.div
-            variants={itemVariants}
-            className="mb-5 inline-flex items-center gap-3 text-sm font-medium text-ink/60"
-          >
-            <span className="h-px w-6 bg-ink/30" aria-hidden="true" />
-            Declut
-          </motion.div>
-
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl lg:text-6xl"
-          >
-            Simplify Your{" "}
-            <span className="text-gold-primary">Space</span>, Amplify Your
-            Life
-          </motion.h1>
-
-          <motion.p
-            variants={itemVariants}
-            className="mx-auto mt-6 max-w-md text-base text-ink/60 lg:mx-0 lg:text-lg"
-          >
-            Turn clutter into cash effortlessly with Declut. List your
-            household items for sale and unlock new possibilities for your
-            space and wallet.
-          </motion.p>
-
-          <motion.div
-            variants={itemVariants}
-            className="mt-8 flex justify-center lg:justify-start"
-          >
-            <AppStoreBadges />
-          </motion.div>
+          <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
+          The Decluttering Marketplace
         </motion.div>
 
-        <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
-          <div ref={phoneRef} className="relative mx-auto w-full max-w-[320px]">
-            <Image
-              src="/images/mobile-mockup.png"
-              alt="Declut app showing browsable listings by category"
-              width={640}
-              height={1300}
-              priority
-              className="h-auto w-[95%] drop-shadow-2xl"
-            />
-          </div>
+        <motion.h1
+          variants={itemVariants}
+          className="text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl lg:text-6xl"
+        >
+          Simplify Your Space,
+          <br />
+          <span className="text-primary">Amplify Your Life</span>
+        </motion.h1>
 
-          <div
-            ref={cardRef}
-            className="absolute left-1/2 top-[54%] z-20 flex w-[85%] max-w-[300px] -translate-x-[28%] md:-translate-x-[88%] -translate-y-1/2 items-center gap-4 rounded-2xl bg-white px-5 py-4 shadow-xl sm:w-auto"
-          >
-            <div>
-              <p className="text-xs text-ink/50">Total Price</p>
-              <p className="text-lg font-bold text-ink">₦210,000.00</p>
+        <motion.p
+          variants={itemVariants}
+          className="mx-auto mt-6 max-w-md text-base text-ink/60 lg:text-lg"
+        >
+          Turn clutter into cash effortlessly with Declut. List your
+          household items for sale and unlock new possibilities for your
+          space and wallet.
+        </motion.p>
+
+        <motion.div variants={itemVariants} className="mt-8">
+          {stage === "waitlist" ? (
+            <div className="flex flex-col items-center gap-3">
+              <motion.button
+                type="button"
+                onClick={() => setIsWaitlistOpen(true)}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="rounded-full bg-primary px-8 py-3.5 text-base font-bold text-white shadow-lg transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                Join Waitlist
+              </motion.button>
+              <p className="text-sm text-ink/50">
+                Be the first to know when we launch
+              </p>
             </div>
-            <button
-              type="button"
-              className="whitespace-nowrap rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-darker focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            >
-              Show Interest
-            </button>
-          </div>
-        </div>
-      </div>
+          ) : (
+            <div className="flex flex-col items-center gap-4">
+              <AppStoreBadges />
+              <div className="flex items-center gap-2 text-sm text-ink/60">
+                <span className="flex -space-x-2" aria-hidden="true">
+                  {avatarStack.map((avatar) => (
+                    <span
+                      key={avatar.initial}
+                      className={`flex size-6 items-center justify-center rounded-full text-[10px] font-bold text-white ring-2 ring-white ${avatar.bg}`}
+                    >
+                      {avatar.initial}
+                    </span>
+                  ))}
+                </span>
+                <span className="flex items-center gap-1 font-semibold text-ink">
+                  <Icon name="star" variant="bold" size={14} color="#fbbf24" />
+                  4.9
+                </span>
+                <span aria-hidden="true">·</span>
+                <span>Loved by 50k+ declutterers</span>
+              </div>
+            </div>
+          )}
+        </motion.div>
+      </motion.div>
+
+      {stage === "waitlist" && (
+        <WaitlistModal open={isWaitlistOpen} onOpenChange={setIsWaitlistOpen} />
+      )}
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import Navbar from "@/components/sections/Navbar";
+import AnnouncementBanner from "@/components/ui/AnnouncementBanner";
 import Hero from "@/components/sections/Hero";
 import FeaturedItems from "@/components/sections/FeaturedItems";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <Navbar />
+      <AnnouncementBanner />
       <main>
         <Hero />
         <FeaturedItems />

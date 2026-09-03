@@ -6,13 +6,13 @@ import { motion } from "framer-motion";
 const badges = [
   {
     href: "#",
-    src: "/images/appstore.png",
-    alt: "Download Declut on the App Store",
+    src: "/images/playstore.png",
+    alt: "Get Declut on Google Play",
   },
   {
     href: "#",
-    src: "/images/playstore.png",
-    alt: "Get Declut on Google Play",
+    src: "/images/appstore.png",
+    alt: "Download Declut on the App Store",
   },
 ];
 
@@ -33,7 +33,7 @@ export default function AppStoreBadges({ className = "" }: { className?: string 
             alt={badge.alt}
             width={150}
             height={44}
-            className="h-11 w-auto"
+            className="h-11 w-auto rounded-lg"
           />
         </motion.a>
       ))}
