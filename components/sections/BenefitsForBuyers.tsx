@@ -87,10 +87,10 @@ export default function BenefitsForBuyers() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
+          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
             Benefits For Buyers
           </h2>
-          <p className="mt-4 text-base text-ink/50 sm:text-lg">
+          <p className="mt-4 text-sm text-ink/50 sm:text-base">
             Explore our array of benefits awaiting buyers on Declut -from
             diverse selections to secure transactions and beyond.
           </p>
@@ -143,8 +143,8 @@ export default function BenefitsForBuyers() {
                   >
                     <card.icon size={20} aria-hidden="true" />
                   </span>
-                  <h4 className="mt-4 font-bold text-ink">{card.title}</h4>
-                  <p className="mt-2 text-sm text-ink/60">
+                  <h4 className="mt-4 text-sm font-bold text-ink">{card.title}</h4>
+                  <p className="mt-2 text-xs text-ink/60">
                     {card.description}
                   </p>
                 </motion.div>
@@ -153,10 +153,10 @@ export default function BenefitsForBuyers() {
           </div>
 
           <FadeIn className="min-w-0 text-center lg:text-left">
-            <h3 className="text-3xl font-extrabold text-ink sm:text-4xl">
+            <h3 className="text-2xl font-extrabold text-ink sm:text-3xl">
               Discover Endless Treasures
             </h3>
-            <p className="mx-auto mt-4 max-w-md text-ink/60 lg:mx-0">
+            <p className="mx-auto mt-4 max-w-md text-sm text-ink/60 lg:mx-0">
               Delve into the multitude of benefits available to buyers on
               Declut - from an extensive array of diverse selections
               catering to every taste and need, to seamless and secure
@@ -165,7 +165,7 @@ export default function BenefitsForBuyers() {
             </p>
             <a
               href="#"
-              className="mt-6 inline-block font-semibold text-primary-darker underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+              className="mt-6 inline-block text-sm font-semibold text-primary-darker underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
             >
               See how it helped others
             </a>

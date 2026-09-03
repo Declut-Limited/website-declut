@@ -19,7 +19,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <FadeIn className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div>
-            <p className="text-2xl font-extrabold text-white">Declut</p>
+            <p className="text-xl font-extrabold text-white">Declut</p>
             <div className="mt-5 flex items-center gap-3">
               {socialLinks.map((social) => (
                 <a
@@ -35,24 +35,24 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-bold text-white">Address</p>
-            <p className="mt-4 text-white/70">
+            <p className="text-sm font-bold text-white">Address</p>
+            <p className="mt-4 text-sm text-white/70">
               5 Ogunsiji close, Allen, Ikeja, Lagos state.
             </p>
           </div>
 
           <div>
-            <p className="font-bold text-white">Call Us</p>
+            <p className="text-sm font-bold text-white">Call Us</p>
             <div className="mt-4 flex flex-col gap-1">
               <a
                 href="tel:+2349160006032"
-                className="text-white/70 transition-colors hover:text-white"
+                className="text-sm text-white/70 transition-colors hover:text-white"
               >
                 +234 916 000 6032
               </a>
               <a
                 href="mailto:Declut@vereinight.com"
-                className="text-white/70 transition-colors hover:text-white"
+                className="text-sm text-white/70 transition-colors hover:text-white"
               >
                 Declut@vereinight.com
               </a>
@@ -60,13 +60,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-bold text-white">Our Policies</p>
+            <p className="text-sm font-bold text-white">Our Policies</p>
             <div className="mt-4 flex flex-col gap-1">
               {policyLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-white/70 transition-colors hover:text-white"
+                  className="text-sm text-white/70 transition-colors hover:text-white"
                 >
                   {link.label}
                 </a>

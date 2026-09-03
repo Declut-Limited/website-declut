@@ -40,10 +40,10 @@ export default function FAQs() {
     <section id="faqs" className="scroll-mt-24 bg-background-light py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
+          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
             FAQs
           </h2>
-          <p className="mt-4 text-base text-ink/50 sm:text-lg">
+          <p className="mt-4 text-sm text-ink/50 sm:text-base">
             Explore our comprehensive FAQ section to discover everything you
             need to know about using Declut for buying and selling.
           </p>
@@ -72,7 +72,7 @@ export default function FAQs() {
                     id={`faq-header-${index}`}
                     className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset sm:px-8"
                   >
-                    <span className="font-bold text-ink">{faq.question}</span>
+                    <span className="text-sm font-bold text-ink">{faq.question}</span>
                     <motion.span
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.2 }}
@@ -97,7 +97,7 @@ export default function FAQs() {
                       transition={{ duration: 0.25, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="px-6 pb-6 text-ink/60 sm:px-8 text-sm">
+                      <p className="px-6 pb-6 text-xs text-ink/60 sm:px-8">
                         {faq.answer}
                       </p>
                     </motion.div>

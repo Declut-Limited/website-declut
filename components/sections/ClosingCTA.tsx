@@ -15,7 +15,7 @@ export default function ClosingCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl font-extrabold leading-tight text-white sm:text-6xl"
+            className="text-4xl font-extrabold leading-tight text-white sm:text-5xl"
           >
             <span className="block">Let&apos;s Declut</span>
             <span className="block pl-16 sm:pl-24 lg:pl-32">Your Space</span>
@@ -27,7 +27,7 @@ export default function ClosingCTA() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-white/70">
+            <p className="text-sm text-white/70">
               Experience the liberation of decluttering with our innovative
               platform. Simply list your household items, connect with eager
               buyers, and effortlessly clear your space of unwanted items.

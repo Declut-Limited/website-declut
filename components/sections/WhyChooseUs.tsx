@@ -84,10 +84,10 @@ export default function WhyChooseUs() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
+          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
             Why you should choose us?
           </h2>
-          <p className="mt-4 text-base text-ink/50 sm:text-lg">
+          <p className="mt-4 text-sm text-ink/50 sm:text-base">
             Discover Why Declut Is Your Top Choice for Buying and Selling -
             Convenience, Value, and Community Await!
           </p>
@@ -122,15 +122,15 @@ export default function WhyChooseUs() {
               >
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-100 text-base font-bold text-primary"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary"
                 >
                   {feature.number}
                 </span>
                 <div>
-                  <h3 className="text-lg font-bold text-ink sm:text-xl">
+                  <h3 className="text-base font-bold text-ink sm:text-lg">
                     {feature.title}
                   </h3>
-                  <p className="mt-2 text-ink/60">{feature.description}</p>
+                  <p className="mt-2 text-sm text-ink/60">{feature.description}</p>
                 </div>
               </motion.li>
             ))}

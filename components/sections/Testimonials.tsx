@@ -99,10 +99,10 @@ export default function Testimonials() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
+          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
             What people are saying
           </h2>
-          <p className="mt-4 text-base text-ink/50 sm:text-lg">
+          <p className="mt-4 text-sm text-ink/50 sm:text-base">
             Read testimonials and reviews from satisfied buyers and sellers
             who have found success on our platform.
           </p>
@@ -124,7 +124,7 @@ export default function Testimonials() {
             >
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute right-7 top-6 font-serif text-6xl leading-none text-primary-100 select-none"
+                className="pointer-events-none absolute right-7 top-6 font-serif text-5xl leading-none text-primary-100 select-none"
               >
                 &rdquo;
               </span>
@@ -140,14 +140,14 @@ export default function Testimonials() {
                   />
                 </div>
                 <div>
-                  <p className="font-bold text-primary-darker">
+                  <p className="text-sm font-bold text-primary-darker">
                     {testimonial.name}
                   </p>
-                  <p className="text-sm text-ink/40">{testimonial.role}</p>
+                  <p className="text-xs text-ink/40">{testimonial.role}</p>
                 </div>
               </div>
 
-              <p className="relative text-[15px] leading-relaxed text-ink/70">
+              <p className="relative text-sm leading-relaxed text-ink/70">
                 {testimonial.quote}
               </p>
             </div>

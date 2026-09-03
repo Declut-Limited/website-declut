@@ -18,9 +18,9 @@ export default function AppDownloadModal({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="rounded-2xl px-6 py-6 sm:max-w-md sm:px-7 sm:py-7">
+      <DialogContent className="rounded-2xl bg-white px-5 py-5 sm:max-w-sm sm:px-6 sm:py-6">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-extrabold text-ink">
+          <DialogTitle className="text-lg font-extrabold text-ink">
             Get Declut App
           </DialogTitle>
           <DialogDescription className="text-ink/60">

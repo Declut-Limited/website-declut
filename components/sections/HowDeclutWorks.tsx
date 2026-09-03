@@ -112,8 +112,8 @@ function StepList({
               {index + 1}
             </span>
             <div>
-              <h4 className="font-bold text-ink">{step.title}</h4>
-              <p className="mt-1.5 text-ink/60">{step.description}</p>
+              <h4 className="text-sm font-bold text-ink">{step.title}</h4>
+              <p className="mt-1.5 text-xs text-ink/60">{step.description}</p>
             </div>
           </motion.li>
         ))}
@@ -130,10 +130,10 @@ export default function HowDeclutWorks() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
+          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
             How Declut Works
           </h2>
-          <p className="mt-4 text-base text-ink/50 sm:text-lg">
+          <p className="mt-4 text-sm text-ink/50 sm:text-base">
             Unlock the simplicity of decluttering with our step-by-step guide
           </p>
         </FadeIn>

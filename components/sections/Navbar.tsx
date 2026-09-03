@@ -34,35 +34,35 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-primary-100/60 bg-background-light/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-ink/10 bg-background-light/90 backdrop-blur-sm">
       <nav
         aria-label="Primary"
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10"
+        className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-10"
       >
         <Link
           href="#home"
           onClick={() => handleNavClick("#home")}
-          className="flex items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="flex items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           <Image
             src="/svg/logo.svg"
             alt=""
-            width={36}
-            height={36}
+            width={30}
+            height={30}
             priority
-            className="rounded-lg"
+            className="rounded-full"
           />
-          <span className="text-lg font-extrabold text-ink">Declut</span>
+          <span className="text-base font-extrabold text-ink">Declut</span>
         </Link>
 
-        <ul className="hidden items-center gap-9 md:flex">
+        <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
                 aria-current={active === link.href ? "page" : undefined}
-                className={`relative text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm ${
+                className={`relative text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm ${
                   active === link.href
                     ? "text-primary"
                     : "text-ink/80 hover:text-primary"
@@ -74,16 +74,13 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <motion.button
+        <button
           type="button"
           onClick={openCtaModal}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="hidden rounded-full bg-primary-50 px-6 py-2.5 text-sm font-semibold text-primary shadow-sm transition-colors hover:bg-primary-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:block"
+          className="hidden rounded-full bg-primary-50 px-5 py-2 text-xs font-semibold text-primary shadow-sm transition-colors hover:bg-primary-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:block"
         >
           {ctaLabel}
-        </motion.button>
+        </button>
 
         <button
           type="button"
@@ -105,7 +102,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-primary-100/60 bg-background-light md:hidden"
+            className="overflow-hidden border-t border-ink/10 bg-background-light md:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 py-4">
               {navLinks.map((link) => (
@@ -113,7 +110,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => handleNavClick(link.href)}
-                    className={`block rounded-md px-2 py-2.5 text-base font-medium ${
+                    className={`block rounded-md px-2 py-2 text-sm font-medium ${
                       active === link.href ? "text-primary" : "text-ink/80"
                     }`}
                   >
@@ -125,7 +122,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={openCtaModal}
-                  className="inline-block w-full rounded-full bg-primary-50 px-6 py-2.5 text-center text-sm font-semibold text-primary transition-colors hover:bg-primary-100"
+                  className="inline-block w-full rounded-full bg-primary-50 px-5 py-2 text-center text-xs font-semibold text-primary transition-colors hover:bg-primary-100"
                 >
                   {ctaLabel}
                 </button>

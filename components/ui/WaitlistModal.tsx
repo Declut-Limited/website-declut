@@ -98,11 +98,11 @@ export default function WaitlistModal({
 
   return (
     <Dialog open={open} onOpenChange={resetAndClose}>
-      <DialogContent className="rounded-2xl px-6 py-6 sm:max-w-md sm:px-7 sm:py-7">
+      <DialogContent className="gap-3 rounded-2xl bg-white px-5 py-4 sm:max-w-lg sm:px-6 sm:py-5">
         {status === "success" ? (
           <div className="py-4 text-center">
             <DialogHeader>
-              <DialogTitle className="text-2xl font-extrabold text-ink">
+              <DialogTitle className="text-lg font-extrabold text-ink">
                 You&apos;re on the list
               </DialogTitle>
               <DialogDescription className="text-ink/60">
@@ -113,7 +113,7 @@ export default function WaitlistModal({
         ) : (
           <>
             <DialogHeader>
-              <DialogTitle className="text-2xl font-extrabold text-ink">
+              <DialogTitle className="text-lg font-extrabold text-ink">
                 Join the Declut Waitlist
               </DialogTitle>
               <DialogDescription className="text-ink/60">
@@ -122,8 +122,8 @@ export default function WaitlistModal({
               </DialogDescription>
             </DialogHeader>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              <div className="flex flex-col gap-2">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <div className="flex flex-col gap-1.5">
                 <Label htmlFor="waitlist-email" className="sr-only">
                   Email Address
                 </Label>
@@ -134,22 +134,22 @@ export default function WaitlistModal({
                   placeholder="Email Address"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  className="h-auto rounded-xl border-none bg-neutral px-4 py-3.5 text-base placeholder:text-ink/40"
+                  className="h-auto rounded-xl border-none bg-neutral px-3.5 py-2.5 text-sm placeholder:text-ink/40"
                 />
               </div>
 
-              <div className="flex flex-col gap-3">
-                <p className="font-bold text-ink">What are you interested in?</p>
+              <div className="flex flex-col gap-2">
+                <p className="text-sm font-bold text-ink">What are you interested in?</p>
                 <RadioGroup
                   value={interest}
                   onValueChange={(value) => setInterest(value as Interest)}
-                  className="gap-0 divide-y divide-white rounded-2xl bg-neutral"
+                  className="gap-0 divide-y divide-white rounded-2xl bg-[#FCFCFD]"
                 >
                   {interestOptions.map((option) => (
                     <label
                       key={option.value}
                       htmlFor={`interest-${option.value}`}
-                      className="flex cursor-pointer items-start gap-3 px-4 py-4"
+                      className="flex cursor-pointer items-start gap-2.5 px-3.5 py-2.5"
                     >
                       <RadioGroupItem
                         value={option.value}
@@ -157,10 +157,10 @@ export default function WaitlistModal({
                         className="mt-1"
                       />
                       <span>
-                        <span className="block font-bold text-ink">
+                        <span className="block text-sm font-bold text-ink">
                           {option.title}
                         </span>
-                        <span className="block text-sm text-ink/60">
+                        <span className="block text-xs text-ink/60">
                           {option.description}
                         </span>
                       </span>
@@ -178,7 +178,7 @@ export default function WaitlistModal({
               <Button
                 type="submit"
                 disabled={status === "submitting"}
-                className="h-auto rounded-full bg-primary py-3.5 text-base font-bold text-white hover:bg-primary/90"
+                className="h-auto rounded-full bg-primary py-2.5 text-sm font-bold text-white hover:bg-primary/90"
               >
                 {status === "submitting" ? "Joining…" : "Join the Waitlist"}
               </Button>

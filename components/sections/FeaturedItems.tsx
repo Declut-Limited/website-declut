@@ -60,10 +60,10 @@ export default function FeaturedItems() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
+          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
             Featured Items
           </h2>
-          <p className="mt-4 text-base text-ink/50 sm:text-lg">
+          <p className="mt-4 text-sm text-ink/50 sm:text-base">
             Discover top picks from our carefully curated collection of
             quality items. We&apos;ve got something special waiting for you.
           </p>
@@ -71,17 +71,17 @@ export default function FeaturedItems() {
 
         <div className="mt-16 grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-12">
           <FadeIn className="order-2 text-center lg:order-1 lg:text-left">
-            <h3 className="text-3xl font-extrabold text-ink sm:text-4xl">
+            <h3 className="text-2xl font-extrabold text-ink sm:text-3xl">
               Discover Your Hidden Gems
             </h3>
-            <p className="mx-auto mt-4 max-w-md text-ink/60 lg:mx-0">
+            <p className="mx-auto mt-4 max-w-md text-sm text-ink/60 lg:mx-0">
               Explore our handpicked collection of top-rated items. From
               trendy decor to tech essentials, find something special to
               enhance your space and simplify your life.
             </p>
             <a
               href="#"
-              className="group mt-6 inline-flex items-center gap-2 font-semibold text-primary-darker focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-primary-25 rounded-sm"
+              className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary-darker focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-primary-25 rounded-sm"
             >
               See more featured items
               <FiArrowRight

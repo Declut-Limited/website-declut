@@ -83,33 +83,33 @@ export default function Hero() {
 
       <div
         ref={leftBadgeRef}
-        className="absolute left-4 top-[28%] z-10 hidden items-center gap-2 rounded-full bg-white px-4 py-2.5 shadow-lg sm:flex lg:left-[8%]"
+        className="absolute left-4 top-[30%] z-10 hidden items-center gap-1.5 rounded-full bg-white px-3 py-2 shadow-lg sm:flex lg:left-[10%]"
       >
-        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary">
-          <Icon name="flash" variant="bold" size={14} color="#ffffff" />
+        <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary">
+          <Icon name="flash" variant="bold" size={11} color="#ffffff" />
         </span>
-        <span className="text-sm font-semibold text-ink">Sold in 2 hrs</span>
+        <span className="text-xs font-semibold text-ink">Sold in 2 hrs</span>
       </div>
 
       <div
         ref={rightBadgeRef}
-        className="absolute right-4 top-[50%] z-10 hidden items-center gap-2 rounded-full bg-white px-4 py-2.5 shadow-lg sm:flex lg:right-[8%]"
+        className="absolute right-4 top-[52%] z-10 hidden items-center gap-1.5 rounded-full bg-white px-3 py-2 shadow-lg sm:flex lg:right-[10%]"
       >
-        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-peach">
-          <Icon name="location" variant="bold" size={14} color="#ffffff" />
+        <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-peach">
+          <Icon name="location" variant="bold" size={11} color="#ffffff" />
         </span>
-        <span className="text-sm font-semibold text-ink">Free to list</span>
+        <span className="text-xs font-semibold text-ink">Free to list</span>
       </div>
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-20 mx-auto flex max-w-2xl flex-col items-center px-6 py-20 text-center lg:py-28"
+        className="relative z-20 mx-auto flex max-w-xl flex-col items-center px-6 py-20 text-center lg:py-28"
       >
         <motion.div
           variants={itemVariants}
-          className="mb-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wide text-ink/70 shadow-sm"
+          className="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-ink/70 shadow-sm"
         >
           <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
           The Decluttering Marketplace
@@ -117,7 +117,7 @@ export default function Hero() {
 
         <motion.h1
           variants={itemVariants}
-          className="text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl lg:text-6xl"
+          className="text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl"
         >
           Simplify Your Space,
           <br />
@@ -126,46 +126,46 @@ export default function Hero() {
 
         <motion.p
           variants={itemVariants}
-          className="mx-auto mt-6 max-w-md text-base text-ink/60 lg:text-lg"
+          className="mx-auto mt-5 max-w-sm text-sm text-ink/60 sm:text-base"
         >
           Turn clutter into cash effortlessly with Declut. List your
           household items for sale and unlock new possibilities for your
           space and wallet.
         </motion.p>
 
-        <motion.div variants={itemVariants} className="mt-8">
+        <motion.div variants={itemVariants} className="mt-7">
           {stage === "waitlist" ? (
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-2.5">
               <motion.button
                 type="button"
                 onClick={() => setIsWaitlistOpen(true)}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                className="rounded-full bg-primary px-8 py-3.5 text-base font-bold text-white shadow-lg transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 Join Waitlist
               </motion.button>
-              <p className="text-sm text-ink/50">
+              <p className="text-xs text-ink/50">
                 Be the first to know when we launch
               </p>
             </div>
           ) : (
-            <div className="flex flex-col items-center gap-4">
-              <AppStoreBadges />
-              <div className="flex items-center gap-2 text-sm text-ink/60">
+            <div className="flex flex-col items-center gap-3">
+              <AppStoreBadges className="scale-90" />
+              <div className="flex items-center gap-1.5 text-xs text-ink/60">
                 <span className="flex -space-x-2" aria-hidden="true">
                   {avatarStack.map((avatar) => (
                     <span
                       key={avatar.initial}
-                      className={`flex size-6 items-center justify-center rounded-full text-[10px] font-bold text-white ring-2 ring-white ${avatar.bg}`}
+                      className={`flex size-5 items-center justify-center rounded-full text-[9px] font-bold text-white ring-2 ring-white ${avatar.bg}`}
                     >
                       {avatar.initial}
                     </span>
                   ))}
                 </span>
                 <span className="flex items-center gap-1 font-semibold text-ink">
-                  <Icon name="star" variant="bold" size={14} color="#fbbf24" />
+                  <Icon name="star" variant="bold" size={12} color="#fbbf24" />
                   4.9
                 </span>
                 <span aria-hidden="true">·</span>

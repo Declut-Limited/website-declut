@@ -87,10 +87,10 @@ export default function BenefitsForSellers() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-primary sm:text-4xl">
+          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
             Benefits For Sellers
           </h2>
-          <p className="mt-4 text-base text-ink/50 sm:text-lg">
+          <p className="mt-4 text-sm text-ink/50 sm:text-base">
             Unlock your Selling potential: Explore why Declut is your premier
             destination for selling - Ease, Profitability &amp; Support Await!
           </p>
@@ -98,16 +98,16 @@ export default function BenefitsForSellers() {
 
         <div className="mt-16 grid min-w-0 gap-16 lg:grid-cols-2 lg:items-center lg:gap-12">
           <FadeIn className="order-2 min-w-0 text-center lg:order-1 lg:text-left">
-            <h3 className="text-3xl font-extrabold text-ink sm:text-4xl">
+            <h3 className="text-2xl font-extrabold text-ink sm:text-3xl">
               Declutter With Ease
             </h3>
-            <p className="mx-auto mt-4 max-w-md text-ink/60 lg:mx-0">
+            <p className="mx-auto mt-4 max-w-md text-sm text-ink/60 lg:mx-0">
               Explore the array of benefits awaiting buyers on Declut - from
               diverse selections to secure transactions and beyond
             </p>
             <a
               href="#"
-              className="mt-6 inline-block font-semibold text-primary-darker underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+              className="mt-6 inline-block text-sm font-semibold text-primary-darker underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
             >
               See how it helped others
             </a>
@@ -159,8 +159,8 @@ export default function BenefitsForSellers() {
                   >
                     <card.icon size={20} aria-hidden="true" />
                   </span>
-                  <h4 className="mt-4 font-bold text-ink">{card.title}</h4>
-                  <p className="mt-2 text-sm text-ink/60">
+                  <h4 className="mt-4 text-sm font-bold text-ink">{card.title}</h4>
+                  <p className="mt-2 text-xs text-ink/60">
                     {card.description}
                   </p>
                 </motion.div>
