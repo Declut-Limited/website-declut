@@ -17,8 +17,8 @@ const contactDetails = [
   },
   {
     icon: "sms" as const,
-    value: "Declut@vereinight.com",
-    href: "mailto:Declut@vereinight.com",
+    value: "Mydeclutapp@gmail.com",
+    href: "mailto:mydeclutapp@gmail.com",
   },
   {
     icon: "location" as const,
@@ -95,7 +95,7 @@ export default function GetInTouch() {
               />
             </div>
 
-            <div className="absolute right-4 top-6 flex flex-col gap-4 rounded-2xl bg-white p-5 shadow-xl sm:left-8 sm:top-10 sm:p-6">
+            <div className="absolute right-4 top-6 flex w-auto flex-col gap-4 rounded-2xl bg-white p-5 shadow-xl sm:right-8 sm:top-10 sm:p-6">
               {contactDetails.map((detail) => (
                 <div key={detail.value} className="flex items-center gap-3">
                   <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-50">
