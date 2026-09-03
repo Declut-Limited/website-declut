@@ -10,10 +10,11 @@ import AboutUs from "@/components/sections/AboutUs";
 import Testimonials from "@/components/sections/Testimonials";
 import ClosingCTA from "@/components/sections/ClosingCTA";
 import Footer from "@/components/Footer";
+import React from "react";
 
 export default function Home() {
   return (
-    <>
+    <React.Fragment>
       <Navbar />
       <main>
         <Hero />
@@ -28,6 +29,6 @@ export default function Home() {
         <ClosingCTA />
       </main>
       <Footer />
-    </>
+    </React.Fragment>
   );
 }

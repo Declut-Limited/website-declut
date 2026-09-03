@@ -12,8 +12,11 @@ const navLinks = [
   { href: "#about", label: "About Us" },
 ];
 
+const IS_WAITLIST_STAGE = (process.env.APP_STAGE === "waitlist" ? true : false);
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalType, setModalType] = useState(""); // waitlist | app
   const [active, setActive] = useState("#home");
 
   const handleNavClick = (href: string) => {
@@ -28,7 +31,7 @@ export default function Navbar() {
         className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10"
       >
         <Link href="#home" onClick={() => handleNavClick("#home")} className="flex items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-          <Image src="/images/logo.svg" alt="Declut" width={44} height={44} priority />
+          <Image src="/svg/logo.svg" alt="Declut" width={44} height={44} priority />
         </Link>
 
         <ul className="hidden items-center gap-9 md:flex">
@@ -50,15 +53,12 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <motion.a
-          href="#contact"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="hidden rounded-full bg-gold-primary px-6 py-2.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-gold-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:block"
+       <button
+          onClick={() => setIsOpen(false)}
+          className="inline-block rounded-full bg-primary-50 px-6 py-2.5 text-center text-sm font-semibold text-primary transition-colors hover:bg-gold-primary-dark"
         >
-          Contact Us
-        </motion.a>
+          {IS_WAITLIST_STAGE ? "Join Waitlist" : "Get The App"}
+        </button>
 
         <button
           type="button"
@@ -97,13 +97,12 @@ export default function Navbar() {
                 </li>
               ))}
               <li className="pt-2">
-                <a
-                  href="#contact"
-                  onClick={() => setIsOpen(false)}
-                  className="inline-block w-full rounded-full bg-gold-primary px-6 py-2.5 text-center text-sm font-semibold text-ink transition-colors hover:bg-gold-primary-dark"
-                >
-                  Contact Us
-                </a>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="inline-block w-full rounded-full bg-primary-50 px-6 py-2.5 text-center text-sm font-semibold text-primary transition-colors hover:bg-gold-primary-dark"
+                  >
+                    {IS_WAITLIST_STAGE ? "Join Waitlist" : "Get The App"}
+                  </button>
               </li>
             </ul>
           </motion.div>

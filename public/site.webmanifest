@@ -3,7 +3,7 @@
   "short_name": "Declut",
   "icons": [
     {
-      "src": "/images/logo.svg",
+      "src": "/svg/logo.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     },

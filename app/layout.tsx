@@ -8,7 +8,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const siteUrl = "https://declut.app";
+const siteUrl = "https://declut.com.ng";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -30,19 +30,12 @@ export const metadata: Metadata = {
       "Turn clutter into cash effortlessly with Declut. List your household items for sale and unlock new possibilities for your space and wallet.",
     images: [
       {
-        url: "/images/og-image.png",
+        url: "/images/icon-512.png",
         width: 1200,
         height: 630,
         alt: "Declut — buy and sell household items",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Declut — Simplify Your Space, Amplify Your Life",
-    description:
-      "Turn clutter into cash effortlessly with Declut. List your household items for sale and unlock new possibilities for your space and wallet.",
-    images: ["/images/og-image.png"],
   },
   manifest: "/site.webmanifest",
 };
@@ -70,11 +63,6 @@ const jsonLd = {
       applicationCategory: "ShoppingApplication",
       operatingSystem: "iOS, Android",
       url: siteUrl,
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-      },
     },
   ],
 };
