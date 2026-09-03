@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Icon from "@/components/ui/Icon";
 import { getAppStage } from "@/lib/app-stage";
 
@@ -14,7 +15,7 @@ const avatarStack = [
 ];
 
 const stats = [
-  { value: "4.9", icon: "star" as const, iconColor: "#fbbf24", label: "Average app rating" },
+  { value: "4.9", iconSrc: "/svg/star.svg", label: "Average app rating" },
   { value: "50K+", icon: "people" as const, iconColor: "#2563eb", label: "Active declutters" },
   { value: "300K+", icon: "box" as const, iconColor: "#ffffff", label: "Items given a second life" },
 ];
@@ -51,7 +52,11 @@ export default function SocialProofBand() {
                   {stat.value}
                 </p>
                 <p className="mt-1 flex items-center justify-center gap-1.5 text-xs text-white/60">
-                  <Icon name={stat.icon} variant="bold" size={14} color={stat.iconColor} />
+                  {stat.iconSrc ? (
+                    <Image src={stat.iconSrc} alt="" width={14} height={14} />
+                  ) : (
+                    <Icon name={stat.icon!} variant="bold" size={14} color={stat.iconColor} />
+                  )}
                   {stat.label}
                 </p>
               </div>

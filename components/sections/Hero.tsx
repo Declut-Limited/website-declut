@@ -165,7 +165,7 @@ export default function Hero() {
                   ))}
                 </span>
                 <span className="flex items-center gap-1 font-semibold text-ink">
-                  <Icon name="star-1" variant="bold" size={18} color="#F79009" />
+                  <Image src="/svg/star.svg" alt="" width={18} height={18} />
                   4.9
                 </span>
                 <span aria-hidden="true">·</span>

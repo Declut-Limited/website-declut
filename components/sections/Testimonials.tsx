@@ -1,15 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import FadeIn from "@/components/ui/FadeIn";
+import { getAppStage } from "@/lib/app-stage";
+
+const stage = getAppStage();
 
 const testimonials = [
   {
     name: "Amara O.",
-    role: "Verified Buyer",
+    rating: 4,
     quote:
       "I found a barely-used dining set for half the retail price. The whole process from browsing to pickup took less than a day - I'm hooked.",
     image:
@@ -17,7 +20,7 @@ const testimonials = [
   },
   {
     name: "Michael T.",
-    role: "Verified Seller",
+    rating: 5,
     quote:
       "Listing my old home gym equipment took five minutes and it sold within the week. Declut made clearing out my garage genuinely painless.",
     image:
@@ -25,7 +28,7 @@ const testimonials = [
   },
   {
     name: "Priya R.",
-    role: "Verified Buyer",
+    rating: 5,
     quote:
       "What I love most is how secure everything feels. I never worried about payment or meeting a stranger - Declut handled it all smoothly.",
     image:
@@ -33,7 +36,7 @@ const testimonials = [
   },
   {
     name: "Daniel K.",
-    role: "Verified Seller",
+    rating: 5,
     quote:
       "Sold three appliances in my first month on the app. The support team even helped me sort out a pickup scheduling issue right away.",
     image:
@@ -41,7 +44,7 @@ const testimonials = [
   },
   {
     name: "Sophia L.",
-    role: "Verified Seller",
+    rating: 4,
     quote:
       "Declut turned my spring cleaning into extra cash. Uploading photos and setting a price was so much simpler than other apps I've tried.",
     image:
@@ -49,7 +52,7 @@ const testimonials = [
   },
   {
     name: "Chidi N.",
-    role: "Verified Buyer",
+    rating: 5,
     quote:
       "As a buyer, the category filters saved me so much time. Found a great desk and chair combo within minutes of opening the app.",
     image:
@@ -57,122 +60,147 @@ const testimonials = [
   },
 ];
 
+const PAGE_SIZE = 2;
+const pageCount = Math.ceil(testimonials.length / PAGE_SIZE);
+
+const cardVariants = {
+  enter: (direction: number) => ({
+    opacity: 0,
+    x: direction > 0 ? 48 : -48,
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as const },
+  },
+  exit: (direction: number) => ({
+    opacity: 0,
+    x: direction > 0 ? -48 : 48,
+    transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] as const },
+  }),
+};
+
 export default function Testimonials() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(true);
+  const [[page, direction], setPageState] = useState([0, 0]);
+  const current = testimonials.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
 
-  const updateScrollState = () => {
-    const track = trackRef.current;
-    if (!track) return;
-    setCanScrollPrev(track.scrollLeft > 8);
-    setCanScrollNext(
-      track.scrollLeft + track.clientWidth < track.scrollWidth - 8
-    );
+  const goTo = (index: number) => {
+    const next = Math.max(0, Math.min(pageCount - 1, index));
+    setPageState([next, next > page ? 1 : -1]);
   };
 
-  useEffect(() => {
-    updateScrollState();
-    const track = trackRef.current;
-    if (!track) return;
-    track.addEventListener("scroll", updateScrollState, { passive: true });
-    window.addEventListener("resize", updateScrollState);
-    return () => {
-      track.removeEventListener("scroll", updateScrollState);
-      window.removeEventListener("resize", updateScrollState);
-    };
-  }, []);
-
-  const scrollByCard = (direction: 1 | -1) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelector<HTMLElement>("[data-card]");
-    const gap = 32;
-    const amount = card ? card.offsetWidth + gap : 360;
-    track.scrollBy({ left: direction * amount, behavior: "smooth" });
-  };
+  if (stage !== "live") return null;
 
   return (
-    <section
-      id="testimonials"
-      className="scroll-mt-24 bg-background py-20 lg:py-28"
-    >
+    <section id="testimonials" className="scroll-mt-24 bg-[#FCFCFD] py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
-            What people are saying
-          </h2>
-          <p className="mt-4 text-sm text-ink/50 sm:text-base">
-            Read testimonials and reviews from satisfied buyers and sellers
-            who have found success on our platform.
-          </p>
-        </FadeIn>
+        <div className="relative">
+          <FadeIn>
+            <p className="text-xs font-bold uppercase tracking-wide text-primary">
+              Real Experiences
+            </p>
+            <h2 className="mt-2 text-2xl font-extrabold text-ink sm:text-3xl">
+              What Our Users Say
+            </h2>
+          </FadeIn>
+          <Image
+            src="/svg/Quote-mark.svg"
+            alt=""
+            width={100}
+            height={81}
+            aria-hidden="true"
+            className="pointer-events-none absolute right-0 top-0 hidden select-none sm:block"
+          />
+        </div>
 
         <motion.div
-          ref={trackRef}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="no-scrollbar mt-16 flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth px-1 pb-4"
+          className="relative mt-10 grid gap-6 sm:grid-cols-2"
         >
-          {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.name}
-              data-card
-              className="relative flex w-[85%] shrink-0 snap-start flex-col gap-6 rounded-3xl bg-white p-8 sm:w-[46%] sm:p-9"
-            >
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute right-7 top-6 font-serif text-5xl leading-none text-primary-100 select-none"
+          <AnimatePresence mode="popLayout" custom={direction} initial={false}>
+            {current.map((testimonial) => (
+              <motion.div
+                key={`${page}-${testimonial.name}`}
+                custom={direction}
+                variants={cardVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                className="rounded-2xl border border-ink/10 bg-white p-7"
               >
-                &rdquo;
-              </span>
-
-              <div className="flex items-center gap-4">
-                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full ring-[3px] ring-gold-primary ring-offset-2 ring-offset-white">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    width={56}
-                    height={56}
-                    className="h-full w-full rounded-full object-cover"
-                  />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-primary-darker">
-                    {testimonial.name}
+                <div className="flex gap-4">
+                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      width={56}
+                      height={56}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <p className="text-sm leading-relaxed text-ink/70">
+                    {testimonial.quote}
                   </p>
-                  <p className="text-xs text-ink/40">{testimonial.role}</p>
                 </div>
-              </div>
 
-              <p className="relative text-sm leading-relaxed text-ink/70">
-                {testimonial.quote}
-              </p>
-            </div>
-          ))}
+                <div className="mt-5 flex items-center justify-between">
+                  <div className="flex gap-0.5" aria-label={`${testimonial.rating} out of 5 stars`}>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Image
+                        key={i}
+                        src={i < testimonial.rating ? "/svg/star.svg" : "/svg/empty-star.svg"}
+                        alt=""
+                        width={16}
+                        height={16}
+                      />
+                    ))}
+                  </div>
+                  <p className="text-sm font-bold text-primary">{testimonial.name}</p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </motion.div>
 
-        <div className="mt-8 flex justify-end gap-3">
-          <button
-            type="button"
-            onClick={() => scrollByCard(-1)}
-            disabled={!canScrollPrev}
-            aria-label="Previous testimonial"
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-neutral text-ink/40 transition-colors enabled:hover:bg-primary-100 enabled:hover:text-primary disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-          >
-            <FiArrowLeft size={18} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollByCard(1)}
-            disabled={!canScrollNext}
-            aria-label="Next testimonial"
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-100 text-primary transition-colors enabled:hover:bg-primary enabled:hover:text-white disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-          >
-            <FiArrowRight size={18} aria-hidden="true" />
-          </button>
+        <div className="mt-8 flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            {Array.from({ length: pageCount }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => goTo(i)}
+                aria-label={`Go to testimonials page ${i + 1}`}
+                aria-current={i === page}
+                className={`h-2 rounded-full transition-all ${
+                  i === page ? "w-6 bg-primary" : "w-2 bg-ink/15 hover:bg-ink/25"
+                }`}
+              />
+            ))}
+          </div>
+
+          <div className="flex gap-3">
+            <button
+              type="button"
+              onClick={() => goTo(page - 1)}
+              disabled={page === 0}
+              aria-label="Previous testimonials"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-neutral text-ink/40 transition-colors enabled:hover:bg-primary-100 enabled:hover:text-primary disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              <FiArrowLeft size={18} aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo(page + 1)}
+              disabled={page === pageCount - 1}
+              aria-label="Next testimonials"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-100 text-primary transition-colors enabled:hover:bg-primary enabled:hover:text-white disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              <FiArrowRight size={18} aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
