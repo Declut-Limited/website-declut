@@ -6,12 +6,20 @@ import { motion } from "framer-motion";
 const badges = [
   {
     href: "#",
-    src: "/images/playstore.png",
+    icon: "/svg/GooglePlay.svg",
+    iconWidth: 24,
+    iconHeight: 26,
+    eyebrow: "GET IT ON",
+    label: "Google Play",
     alt: "Get Declut on Google Play",
   },
   {
     href: "#",
-    src: "/images/appstore.png",
+    icon: "/svg/AppleIcon.svg",
+    iconWidth: 19,
+    iconHeight: 23,
+    eyebrow: "Download on the",
+    label: "App Store",
     alt: "Download Declut on the App Store",
   },
 ];
@@ -21,20 +29,25 @@ export default function AppStoreBadges({ className = "" }: { className?: string 
     <div className={`flex items-center gap-3 ${className}`}>
       {badges.map((badge) => (
         <motion.a
-          key={badge.src}
+          key={badge.label}
           href={badge.href}
+          aria-label={badge.alt}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="block overflow-hidden rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <Image
-            src={badge.src}
-            alt={badge.alt}
-            width={150}
-            height={44}
-            className="h-11 w-auto rounded-full"
+            src={badge.icon}
+            alt=""
+            width={badge.iconWidth}
+            height={badge.iconHeight}
+            className="h-5 w-auto"
           />
+          <span className="flex flex-col items-start leading-none">
+            <span className="text-[9px]">{badge.eyebrow}</span>
+            <span className="text-sm font-semibold">{badge.label}</span>
+          </span>
         </motion.a>
       ))}
     </div>
