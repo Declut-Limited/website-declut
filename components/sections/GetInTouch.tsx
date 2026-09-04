@@ -84,7 +84,7 @@ export default function GetInTouch() {
       <div className="mx-auto max-w-300 px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <FadeIn className="relative">
-            <div className="relative aspect-4/3 overflow-hidden rounded-[2rem]">
+            <div className="relative aspect-square overflow-hidden rounded-[2rem] sm:aspect-4/3">
               <iframe
                 src={MAP_EMBED_SRC}
                 loading="lazy"
@@ -95,7 +95,7 @@ export default function GetInTouch() {
               />
             </div>
 
-            <div className="absolute right-4 top-6 flex w-auto flex-col gap-4 rounded-2xl bg-white p-5 shadow-xl sm:right-8 sm:top-10 sm:p-6">
+            <div className="absolute right-4 top-6 hidden w-auto flex-col gap-4 rounded-2xl bg-white p-5 shadow-xl sm:right-8 sm:top-10 sm:flex sm:p-6">
               {contactDetails.map((detail) => (
                 <div key={detail.value} className="flex items-center gap-3">
                   <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-50">

@@ -44,7 +44,7 @@ export default function AppStoreBadges({
   variant?: "dark" | "light";
 }) {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
       {badges.map((badge) => (
         <motion.a
           key={badge.label}
