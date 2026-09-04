@@ -36,9 +36,19 @@ export default function Navbar() {
   useEffect(() => {
     if (!isOpen) return;
 
+    // Opening the menu expands the sticky header, and the browser's scroll
+    // anchoring compensates by nudging scrollY — which fires a native
+    // "scroll" event on its own. Delay listening until after the open
+    // transition settles so that isn't mistaken for a user scroll.
     const closeOnScroll = () => setIsOpen(false);
-    window.addEventListener("scroll", closeOnScroll, { passive: true });
-    return () => window.removeEventListener("scroll", closeOnScroll);
+    const timeoutId = window.setTimeout(() => {
+      window.addEventListener("scroll", closeOnScroll, { passive: true });
+    }, 300);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      window.removeEventListener("scroll", closeOnScroll);
+    };
   }, [isOpen]);
 
   return (
