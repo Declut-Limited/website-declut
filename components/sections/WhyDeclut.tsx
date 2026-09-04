@@ -96,8 +96,8 @@ export default function WhyDeclut() {
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
           <FadeIn className="mx-auto w-full max-w-md">
             <Image
-              src="/images/mobile-mockup.png"
-              alt="Declut app preview"
+              src={tab === "sellers" ? "/images/mobile-mockup-seller.png" : "/images/mobile-mockup-buyer.png"}
+              alt={tab === "sellers" ? "Declut app preview for sellers" : "Declut app preview for buyers"}
               width={1976}
               height={1840}
               className="h-auto w-full"
