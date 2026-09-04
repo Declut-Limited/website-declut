@@ -85,7 +85,7 @@ export default function FAQs() {
           <p className="text-xs font-bold uppercase tracking-wide text-primary">
             Need Answers?
           </p>
-          <h2 className="mt-2 text-2xl font-extrabold text-ink sm:text-3xl">
+          <h2 className="mt-2 text-xl font-extrabold text-ink sm:text-3xl">
             Frequently Asked Questions
           </h2>
         </FadeIn>

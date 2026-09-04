@@ -58,7 +58,7 @@ export default function AboutUs() {
             <p className="text-xs font-bold uppercase tracking-wide text-white">
               About Us
             </p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+            <h2 className="mt-4 text-2xl font-extrabold leading-tight text-white sm:text-4xl">
               We are your go-to platform for simplifying the decluttering
               process.
             </h2>

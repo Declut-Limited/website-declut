@@ -117,7 +117,7 @@ export default function GetInTouch() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <h2 className="text-2xl font-extrabold text-ink sm:text-3xl">Get in touch</h2>
+            <h2 className="text-xl font-extrabold text-ink sm:text-3xl">Get in touch</h2>
 
             {status === "success" ? (
               <p className="mt-6 text-sm text-ink/60">

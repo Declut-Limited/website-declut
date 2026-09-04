@@ -115,10 +115,10 @@ export default function Footer() {
 
         <div className="mt-16 border-t border-white/10 pt-6">
           <div className="flex flex-col-reverse items-center gap-4 sm:flex-row sm:justify-between">
-            <p className="text-sm text-white/50">
+            <p className="text-xs text-white/50">
               © {new Date().getFullYear()} Declut Limited. All rights reserved
             </p>
-            <div className="flex items-center gap-2 text-sm text-white/50">
+            <div className="flex items-center gap-2 text-xs text-white/50">
               {policyLinks.map((link, index) => (
                 <span key={link.label} className="flex items-center gap-2">
                   {index > 0 && <span aria-hidden="true">|</span>}

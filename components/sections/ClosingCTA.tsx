@@ -38,7 +38,7 @@ export default function ClosingCTA() {
             <p className="text-xs font-bold uppercase tracking-wide text-white">
               {stage === "waitlist" ? "Coming Soon" : "Start Today"}
             </p>
-            <h2 className="mt-3 text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+            <h2 className="mt-3 text-2xl font-extrabold leading-tight text-white sm:text-4xl">
               {stage === "waitlist"
                 ? "Be First to Experience the New Declut"
                 : "Ready To Declutter Your Space?"}

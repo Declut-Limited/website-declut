@@ -85,7 +85,7 @@ export default function FeaturedItems() {
             <p className="text-xs font-bold uppercase tracking-wide text-primary">
               {stage === "waitlist" ? "Why join early?" : "Fresh listings"}
             </p>
-            <h2 className="mt-2 text-2xl font-extrabold text-ink sm:text-3xl">
+            <h2 className="mt-2 text-xl font-extrabold text-ink sm:text-3xl">
               {stage === "waitlist"
                 ? "A Simpler Marketplace Is Coming."
                 : "Featured Finds Near You"}

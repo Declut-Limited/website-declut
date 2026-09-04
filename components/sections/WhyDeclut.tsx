@@ -69,7 +69,7 @@ export default function WhyDeclut() {
           <p className="text-xs font-bold uppercase tracking-wide text-primary">
             Why Declut
           </p>
-          <h2 className="mt-2 text-2xl font-extrabold text-ink sm:text-3xl">
+          <h2 className="mt-2 text-xl font-extrabold text-ink sm:text-3xl">
             Built For Both Sides Of The Deal
           </h2>
         </FadeIn>
@@ -121,7 +121,7 @@ export default function WhyDeclut() {
                     variants={prefersReducedMotion ? undefined : cardVariants}
                     initial={prefersReducedMotion ? undefined : "hidden"}
                     animate="visible"
-                    className={`flex items-center gap-4 rounded-2xl p-4 ${
+                    className={`flex items-center gap-4 rounded-2xl p-3 sm:p-4 ${
                       isFeatured ? "bg-[#93C5FD] text-ink" : "bg-white"
                     }`}
                   >

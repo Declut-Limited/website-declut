@@ -99,7 +99,7 @@ export default function Testimonials() {
             <p className="text-xs font-bold uppercase tracking-wide text-primary">
               Real Experiences
             </p>
-            <h2 className="mt-2 text-2xl font-extrabold text-ink sm:text-3xl">
+            <h2 className="mt-2 text-xl font-extrabold text-ink sm:text-3xl">
               What Our Users Say
             </h2>
           </FadeIn>

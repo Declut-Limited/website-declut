@@ -59,7 +59,7 @@ export default function HowDeclutWorks() {
             <p className="text-xs font-bold uppercase tracking-wide text-primary">
               Simple Process
             </p>
-            <h2 className="mt-2 text-2xl font-extrabold text-ink sm:text-3xl">
+            <h2 className="mt-2 text-xl font-extrabold text-ink sm:text-3xl">
               How It Works
             </h2>
           </FadeIn>
@@ -91,7 +91,7 @@ export default function HowDeclutWorks() {
                 alt=""
                 width={360}
                 height={280}
-                className="mx-auto w-full max-w-34"
+                className="mx-auto w-full max-w-28 sm:max-w-34"
               />
               <h3 className="mt-4 font-bold text-ink">{step.title}</h3>
               <p className="mx-auto mt-2 max-w-xs text-sm text-ink/60">
