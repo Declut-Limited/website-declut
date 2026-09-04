@@ -3,7 +3,18 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const badges = [
+type Badge = {
+  href: string;
+  icon: string;
+  iconDark?: string;
+  iconWidth: number;
+  iconHeight: number;
+  eyebrow: string;
+  label: string;
+  alt: string;
+};
+
+const badges: Badge[] = [
   {
     href: "#",
     icon: "/svg/GooglePlay.svg",
@@ -16,6 +27,7 @@ const badges = [
   {
     href: "#",
     icon: "/svg/AppleIcon.svg",
+    iconDark: "/svg/AppleIconWhite.svg",
     iconWidth: 19,
     iconHeight: 23,
     eyebrow: "Download on the",
@@ -48,7 +60,7 @@ export default function AppStoreBadges({
           }`}
         >
           <Image
-            src={badge.icon}
+            src={variant === "dark" ? (badge.iconDark ?? badge.icon) : badge.icon}
             alt=""
             width={badge.iconWidth}
             height={badge.iconHeight}
