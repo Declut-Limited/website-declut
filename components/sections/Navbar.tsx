@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
@@ -32,6 +32,14 @@ export default function Navbar() {
     setIsOpen(false);
     setIsCtaModalOpen(true);
   };
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const closeOnScroll = () => setIsOpen(false);
+    window.addEventListener("scroll", closeOnScroll, { passive: true });
+    return () => window.removeEventListener("scroll", closeOnScroll);
+  }, [isOpen]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-background-light/90 backdrop-blur-sm">

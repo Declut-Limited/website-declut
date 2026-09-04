@@ -66,7 +66,7 @@ export default function Hero() {
   }, [prefersReducedMotion]);
 
   return (
-    <section id="home" className="relative min-h-[75vh] scroll-mt-24 overflow-hidden bg-white sm:min-h-none">
+    <section id="home" className="relative min-h-[60vh] scroll-mt-24 overflow-hidden bg-white sm:min-h-none">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-70"
@@ -82,7 +82,7 @@ export default function Hero() {
 
       <div
         ref={leftBadgeRef}
-        className="absolute left-4 top-[30%] z-10 hidden items-center gap-1.5 rounded-full bg-white px-3 py-2 shadow-lg sm:flex lg:left-[10%]"
+        className="absolute left-0 top-[3%] z-10 flex items-center gap-1.5 rounded-full bg-white px-3 py-2 shadow-lg sm:left-4 sm:top-[30%] lg:left-[10%]"
       >
         <Image src="/svg/flash-circle.svg" alt="" width={22} height={22} />
         <span className="text-xs font-semibold text-ink">Sold in 2 hrs</span>
@@ -90,9 +90,9 @@ export default function Hero() {
 
       <div
         ref={rightBadgeRef}
-        className="absolute right-4 top-[52%] z-10 hidden items-center gap-1.5 rounded-full bg-white px-3 py-2 shadow-lg sm:flex lg:right-[10%]"
+        className="absolute right-0 top-[88%] z-10 flex items-center gap-1.5 rounded-full bg-white px-3 py-2 shadow-lg sm:right-4 sm:top-[52%] lg:right-[10%]"
       >
-        <Image src="/svg/tag-2.svg" alt="" width={11} height={11} />
+        <Image src="/svg/tag-2.svg" alt="" width={18} height={18} />
         <span className="text-xs font-semibold text-ink">Free to list</span>
       </div>
 
@@ -106,7 +106,10 @@ export default function Hero() {
           variants={itemVariants}
           className="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-ink/70 shadow-sm"
         >
-          <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
+          <span className="relative flex size-1.5" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
+          </span>
           The Decluttering Marketplace
         </motion.div>
 
