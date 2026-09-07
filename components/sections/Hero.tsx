@@ -66,7 +66,7 @@ export default function Hero() {
   }, [prefersReducedMotion]);
 
   return (
-    <section id="home" className="relative min-h-[60vh] scroll-mt-24 overflow-hidden bg-white sm:min-h-none">
+    <section id="home" className="relative flex min-h-[78vh] flex-col items-center justify-center scroll-mt-22 overflow-hidden bg-white sm:min-h-none sm:min-h-[95vh]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-70"

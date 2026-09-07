@@ -23,6 +23,10 @@
   --font-sans: var(--font-plus-jakarta-sans), sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
