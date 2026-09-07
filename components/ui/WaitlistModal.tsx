@@ -12,6 +12,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import LocationAutocomplete from "@/components/ui/LocationAutocomplete";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -45,6 +46,7 @@ export default function WaitlistModal({
   onOpenChange: (open: boolean) => void;
 }) {
   const [email, setEmail] = useState("");
+  const [location, setLocation] = useState("");
   const [interest, setInterest] = useState<Interest>("buying");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -55,6 +57,7 @@ export default function WaitlistModal({
       setTimeout(() => {
         setStatus("idle");
         setEmail("");
+        setLocation("");
         setInterest("buying");
         setErrorMessage("");
       }, 200);
@@ -76,7 +79,7 @@ export default function WaitlistModal({
       const response = await fetch(`${API_BASE_URL}/waitlist`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, interest }),
+        body: JSON.stringify({ email, location, interest }),
       });
       const data = await response.json();
 
@@ -134,6 +137,20 @@ export default function WaitlistModal({
                   placeholder="Email Address"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
+                  className="h-auto rounded-xl border-none bg-neutral px-3.5 py-2.5 text-sm placeholder:text-ink/40"
+                />
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <Label htmlFor="waitlist-location" className="sr-only">
+                  City, State
+                </Label>
+                <LocationAutocomplete
+                  id="waitlist-location"
+                  required
+                  placeholder="City, State (e.g. Ikeja, Lagos)"
+                  value={location}
+                  onChange={setLocation}
                   className="h-auto rounded-xl border-none bg-neutral px-3.5 py-2.5 text-sm placeholder:text-ink/40"
                 />
               </div>
