@@ -100,7 +100,8 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-20 mx-auto flex max-w-xl flex-col items-center px-6 py-20 text-center lg:py-28"
+        // TODO: CHANGE THE MARGIN TO BACK TO 28 WHEN WE FINALLY REMOVE THE TOP BANNER
+        className="relative z-20 mx-auto flex max-w-xl flex-col items-center px-6 py-20 text-center lg:pt-20 lg:py-28"
       >
         <motion.div
           variants={itemVariants}
