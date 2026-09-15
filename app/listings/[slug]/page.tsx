@@ -29,14 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       images: [{ url: mainImageUrl, width: 1200, height: 630, alt: title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      site: "@Declut_",
-      title,
-      description,
-      images: [mainImageUrl],
-    },
+    }
   };
 }
 

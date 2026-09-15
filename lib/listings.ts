@@ -1,5 +1,3 @@
-import { cache } from "react";
-
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export type PublicListing = {
@@ -9,28 +7,28 @@ export type PublicListing = {
   mainImageUrl: string;
 };
 
-export const getPublicListingBySlug = cache(
-  async (slug: string): Promise<PublicListing | null> => {
-    if (!API_BASE_URL || !slug) return null;
+export async function getPublicListingBySlug(
+  slug: string
+): Promise<PublicListing | null> {
+  if (!API_BASE_URL || !slug) return null;
 
-    try {
-      const response = await fetch(
-        `${API_BASE_URL}/listings/public/${encodeURIComponent(slug)}`,
-        { next: { revalidate: 60 } }
-      );
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/listings/public/${encodeURIComponent(slug)}`,
+      { cache: "no-store" }
+    );
 
-      if (!response.ok) return null;
+    if (!response.ok) return null;
 
-      const payload = await response.json();
-      const listing = payload?.data ?? payload;
+    const payload = await response.json();
+    const listing = payload?.data ?? payload;
 
-      if (!listing || typeof listing !== "object" || !listing.title) {
-        return null;
-      }
-
-      return listing as PublicListing;
-    } catch {
+    if (!listing || typeof listing !== "object" || !listing.title) {
       return null;
     }
+
+    return listing as PublicListing;
+  } catch {
+    return null;
   }
-);
+}
