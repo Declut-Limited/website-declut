@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       }
     };
   } catch(err) {
+    console.error(err)
 		return {
 			title: "Listing Not Found",
       description: "This listing doesn't exist",
