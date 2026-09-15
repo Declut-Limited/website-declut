@@ -41,32 +41,32 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}/#organization`,
-      name: "Declut",
-      url: siteUrl,
-      logo: `${siteUrl}/images/logo.svg`,
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      url: siteUrl,
-      name: "Declut",
-      publisher: { "@id": `${siteUrl}/#organization` },
-    },
-    {
-      "@type": "SoftwareApplication",
-      name: "Declut",
-      applicationCategory: "ShoppingApplication",
-      operatingSystem: "iOS, Android",
-      url: siteUrl,
-    },
-  ],
-};
+// const jsonLd = {
+//   "@context": "https://schema.org",
+//   "@graph": [
+//     {
+//       "@type": "Organization",
+//       "@id": `${siteUrl}/#organization`,
+//       name: "Declut",
+//       url: siteUrl,
+//       logo: `${siteUrl}/images/logo.svg`,
+//     },
+//     {
+//       "@type": "WebSite",
+//       "@id": `${siteUrl}/#website`,
+//       url: siteUrl,
+//       name: "Declut",
+//       publisher: { "@id": `${siteUrl}/#organization` },
+//     },
+//     {
+//       "@type": "SoftwareApplication",
+//       name: "Declut",
+//       applicationCategory: "ShoppingApplication",
+//       operatingSystem: "iOS, Android",
+//       url: siteUrl,
+//     },
+//   ],
+// };
 
 export default function RootLayout({
   children,
@@ -76,10 +76,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={plusJakartaSans.variable}>
       <body className="font-sans antialiased">
-        <script
+        {/* <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        /> */}
         <IconSprite />
         {children}
       </body>
