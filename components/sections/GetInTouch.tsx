@@ -12,8 +12,8 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 const contactDetails = [
   {
     icon: "call" as const,
-    value: "+234 916 000 6032",
-    href: "tel:+2349160006032",
+    value: "+234 707 234 0000",
+    href: "tel:+2347072340000",
   },
   {
     icon: "sms" as const,
