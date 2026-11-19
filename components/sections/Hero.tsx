@@ -127,9 +127,7 @@ export default function Hero() {
           variants={itemVariants}
           className="mx-auto mt-5 max-w-sm text-sm text-ink/60 sm:text-base"
         >
-          Turn clutter into cash effortlessly with Declut. List your
-          household items for sale and unlock new possibilities for your
-          space and wallet.
+          Discover great finds, sell items you no longer need, and connect directly with buyers and sellers around you. Inspect before you buy and pay the seller directly. 
         </motion.p>
 
         <motion.div variants={itemVariants} className="mt-7">

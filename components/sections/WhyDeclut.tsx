@@ -37,12 +37,12 @@ const buyerBenefits = [
       "Discover one-of-a-kind treasures and unbeatable deals on Declut, where you can find unique items at discounted prices.",
   },
   {
-    title: "Supporting Sustainable Practices",
+    title: "Shop Sustainably",
     description:
-      "Join us in reducing waste and supporting eco-friendly practices by giving pre-loved items a new home.",
+      "Give pre-loved items a second life. Every purchase helps reduce waste and keeps useful products in circulation.",
   },
   {
-    title: "Secure Transactions",
+    title: "Inspect Before You Buy",
     description:
       "Shop with confidence knowing that your transactions on Declut are secure and protected.",
   },
