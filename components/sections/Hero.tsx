@@ -109,7 +109,7 @@ export default function Hero() {
         >
           <span className="relative flex size-1.5" aria-hidden="true">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-primary" /> 
           </span>
           The Decluttering Marketplace
         </motion.div>
